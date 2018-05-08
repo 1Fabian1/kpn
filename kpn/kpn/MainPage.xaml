@@ -8,7 +8,26 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Kamień Papier Nożyce" FontSize="30"/>
+        <StackPanel>
+            <TextBlock Text="Kamień Papier Nożyce" FontSize="30"/>
+            <StackPanel Orientation="Horizontal" Margin="80,0,0,0">
+                <AppBarButton Name="kamienPrzeciwnik" Icon="Contact"/>
+                <AppBarButton Name="papierPrzeciwnik" Icon="Admin"/>
+                <AppBarButton Name="nozycePrzeciwnik" Icon="Delete"/>
+            </StackPanel>
+            <StackPanel Margin="200">
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="80,0,0,0">
+                <AppBarButton Name="kamienJa" Icon="Contact"/>
+                <AppBarButton Name="papierJa" Icon="Admin"/>
+                <AppBarButton Name="nozyceJA" Icon="Delete"/>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton Name="pomoc" Icon="Help"/>
+                <AppBarButton Name="oProgramie" Icon="Camera"/>
+            </StackPanel>
+        </StackPanel>
 
     </Grid>
 </Page>
