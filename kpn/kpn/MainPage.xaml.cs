@@ -20,12 +20,43 @@ namespace kpn
     /// <summary>
     /// Pusta strona, która może być używana samodzielnie lub do której można nawigować wewnątrz ramki.
     /// </summary>
+    /// 
+    //zasady.zwyciestwoNiebieski(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony,
+    //    btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
     public sealed partial class MainPage : Page
     {
+
+        Gra gra = new Gra();
         public MainPage()
         {
             this.InitializeComponent();
-            //test update z laptopa
+           
+
+        }
+
+        private void btKamienNiebieski_Click(object sender, RoutedEventArgs e)
+        {
+            gra.symulujWcisniecie(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony);
+            if (gra.zwyciestwoNiebieski(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony,
+                btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski))
+            {
+                wynikNiebieski.Text = "Niebieski WINNER";
+            }
+            else {
+                wynikCzerwony.Text = "Czerwony Winner";
+            }
+        }
+
+        private void btPapierNiebieski_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
+
+        private void btNozyceNiebieski_Click(object sender, RoutedEventArgs e)
+        {
+            
+
         }
     }
 }

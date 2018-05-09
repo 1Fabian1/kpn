@@ -8,28 +8,34 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel> <!-- pierwszy zestaw - przeciwnik -->
+        <StackPanel> 
             <TextBlock Text="Kamień Papier Nożyce" FontSize="30" Margin="20"/>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock Text="Wynik:  " Style="{ThemeResource BaseTextBlockStyle}"/>
-                <TextBlock Name="wynik" Text="0:0"/>
+                <TextBlock Name="wynikCzerwony" Text=""/>
+                <TextBlock Text=":"/>
+                <TextBlock Name="wynikNiebieski" Text=""/>
             </StackPanel>
-            <StackPanel Width="300" Background="PaleVioletRed" Orientation="Horizontal" Margin="0">
-                <Button Width="100" Height="100">
+            <!-- pierwszy zestaw - przeciwnik -->
+            <StackPanel Name="stackPanelCzerwony" Width="300" Background="PaleVioletRed" Orientation="Horizontal" Margin="0">
+                <Button Name="btKamienCzerwony" Width="100" Height="100"
+                        IsEnabled="False">
                     <StackPanel>
                         <Image Source="/Assets/rock.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
                         <TextBlock Text="kamień" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
                     </StackPanel>
                 </Button>
-                <Button Width="100" Height="100">
+                <Button Name="btPapierCzerwony" Width="100" Height="100"
+                        IsEnabled="False">
                     <StackPanel>
                         <Image Source="/Assets/paper-icon.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
                         <TextBlock Text="papier" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
                     </StackPanel>
                 </Button>
-                <Button Width="100" Height="100">
+                <Button Name="btNozyceCzerwony" Width="100" Height="100"
+                        IsEnabled="False">
                     <StackPanel>
                         <Image Source="/Assets/scissors.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
@@ -37,25 +43,26 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
-            <StackPanel Margin="130">
-            </StackPanel>
-            <StackPanel Width="300" Background="CornflowerBlue" Orientation="Horizontal" Margin="0">
+            
+            <StackPanel Margin="130"/>
+            
+            <StackPanel Name="stackPanelNiebieski" Width="300" Background="CornflowerBlue" Orientation="Horizontal" Margin="0">
                 <!-- drugi zestaw - gracz -->
-                <Button Width="100" Height="100">
+                <Button Name="btKamienNiebieski" Width="100" Height="100" Click="btKamienNiebieski_Click">
                     <StackPanel>
                         <Image Source="/Assets/rock.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
                         <TextBlock Text="kamień" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
                     </StackPanel>
                 </Button>
-                <Button Width="100" Height="100">
+                <Button Name="btPapierNiebieski" Width="100" Height="100" Click="btPapierNiebieski_Click">
                     <StackPanel>
                         <Image Source="/Assets/paper-icon.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
                         <TextBlock Text="papier" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
                     </StackPanel>
                 </Button>
-                <Button Width="100" Height="100">
+                <Button Name="btNozyceNiebieski" Width="100" Height="100" Click="btNozyceNiebieski_Click">
                     <StackPanel>
                         <Image Source="/Assets/scissors.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
