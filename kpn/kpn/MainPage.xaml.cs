@@ -25,6 +25,7 @@ namespace kpn
         public MainPage()
         {
             this.InitializeComponent();
+            //test update z laptopa
         }
     }
 }
