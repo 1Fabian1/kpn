@@ -8,26 +8,65 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <TextBlock Text="Kamień Papier Nożyce" FontSize="30"/>
-            <StackPanel Orientation="Horizontal" Margin="80,0,0,0">
-                <AppBarButton Name="kamienPrzeciwnik" Icon="Contact"/>
-                <AppBarButton Name="papierPrzeciwnik" Icon="Admin"/>
-                <AppBarButton Name="nozycePrzeciwnik" Icon="Delete"/>
+        <StackPanel> <!-- pierwszy zestaw - przeciwnik -->
+            <TextBlock Text="Kamień Papier Nożyce" FontSize="30" Margin="20"/>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Wynik:  " Style="{ThemeResource BaseTextBlockStyle}"/>
+                <TextBlock Name="wynik" Text="0:0"/>
             </StackPanel>
-            <StackPanel Margin="200">
+            <StackPanel Width="300" Background="PaleVioletRed" Orientation="Horizontal" Margin="0">
+                <Button Width="100" Height="100">
+                    <StackPanel>
+                        <Image Source="/Assets/rock.png" Width="60" Height="60"
+                               HorizontalAlignment="Center"/>
+                        <TextBlock Text="kamień" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
+                    </StackPanel>
+                </Button>
+                <Button Width="100" Height="100">
+                    <StackPanel>
+                        <Image Source="/Assets/paper-icon.png" Width="60" Height="60"
+                               HorizontalAlignment="Center"/>
+                        <TextBlock Text="papier" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
+                    </StackPanel>
+                </Button>
+                <Button Width="100" Height="100">
+                    <StackPanel>
+                        <Image Source="/Assets/scissors.png" Width="60" Height="60"
+                               HorizontalAlignment="Center"/>
+                        <TextBlock Text="nożyce" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="80,0,0,0">
-                <AppBarButton Name="kamienJa" Icon="Contact"/>
-                <AppBarButton Name="papierJa" Icon="Admin"/>
-                <AppBarButton Name="nozyceJA" Icon="Delete"/>
-
+            <StackPanel Margin="130">
+            </StackPanel>
+            <StackPanel Width="300" Background="CornflowerBlue" Orientation="Horizontal" Margin="0">
+                <!-- drugi zestaw - gracz -->
+                <Button Width="100" Height="100">
+                    <StackPanel>
+                        <Image Source="/Assets/rock.png" Width="60" Height="60"
+                               HorizontalAlignment="Center"/>
+                        <TextBlock Text="kamień" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
+                    </StackPanel>
+                </Button>
+                <Button Width="100" Height="100">
+                    <StackPanel>
+                        <Image Source="/Assets/paper-icon.png" Width="60" Height="60"
+                               HorizontalAlignment="Center"/>
+                        <TextBlock Text="papier" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
+                    </StackPanel>
+                </Button>
+                <Button Width="100" Height="100">
+                    <StackPanel>
+                        <Image Source="/Assets/scissors.png" Width="60" Height="60"
+                               HorizontalAlignment="Center"/>
+                        <TextBlock Text="nożyce" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <AppBarButton Name="pomoc" Icon="Help"/>
                 <AppBarButton Name="oProgramie" Icon="Camera"/>
             </StackPanel>
         </StackPanel>
-
     </Grid>
 </Page>
