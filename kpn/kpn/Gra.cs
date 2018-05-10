@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using System.Diagnostics;
 
+
 namespace kpn
 {
     class Gra
     {
-
+        Random random = new Random();
         public bool remis(RadioButton kamienCzerw, RadioButton papierCzerw, RadioButton nozyceCzerw,
             RadioButton kamienNieb, RadioButton papierNieb, RadioButton nozyceNieb)
         {
@@ -35,7 +36,7 @@ namespace kpn
             else return false;
         }
 
-        public int przyznajPunkty(int wynikNiebieski, int wynikCzerwony, Boolean sprawdzRemis, Boolean czyNiebieskiWygrał)
+        public int przyznajPunktyNiebieski(int wynikNiebieski, int wynikCzerwony, Boolean sprawdzRemis, Boolean czyNiebieskiWygrał)
         {
             if (sprawdzRemis == true)
             {
@@ -48,35 +49,56 @@ namespace kpn
                 {
                     return wynikNiebieski++;
                 }
-                else
+            }
+            return 0;
+            
+        }
+
+        public int przyznajPunktyCzerwony(int wynikNiebieski, int wynikCzerwony, Boolean sprawdzRemis, Boolean czyNiebieskiWygrał)
+        {
+            if (sprawdzRemis == true)
+            {
+                Debug.WriteLine("Sprawdzam remis");
+                return 0;
+            }
+            else
+            {
+                if (czyNiebieskiWygrał ==false)
                 {
                     return wynikCzerwony++;
                 }
             }
-            
+            return 0;
+
         }
 
-        public RadioButton symulujWcisniecie(RadioButton kamienCzerw, RadioButton papierCzerw, RadioButton nozyceCzerw)
+        public void symulujWcisniecie(RadioButton kamienCzerw, RadioButton papierCzerw, RadioButton nozyceCzerw)
         {
             int traf;
-            Random random = new Random();
-            //traf = random.Next(0, 2);
-            traf = 2;   //sztywne przypisanie
+            traf = random.Next(0, 2);
             if (traf == 0) {
-                kamienCzerw.IsEnabled = true;
-                return kamienCzerw;
+                kamienCzerw.IsChecked = true;
             }
-            if (traf == 1)
+            else if (traf == 1)
             {
-                papierCzerw.IsEnabled = true;
-                return papierCzerw;
+                papierCzerw.IsChecked = true;
             }
-            if (traf == 2)
+            else if (traf == 2)
             {
-                nozyceCzerw.IsEnabled = true;
-                return nozyceCzerw;
+                nozyceCzerw.IsChecked = true;
             }
-            else return null;
+        }
+
+        public void pilnujGry(TextBox tbTura, RadioButton rb1, RadioButton rb2, RadioButton rb3)
+        {
+            int tury = int.Parse(tbTura.Text);
+            if (tury >=10)
+            {
+                Debug.WriteLine("Koniec gry");
+                rb1.IsEnabled = false;
+                rb2.IsEnabled = false;
+                rb3.IsEnabled = false;
+            }
         }
     }
 }

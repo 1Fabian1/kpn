@@ -9,17 +9,23 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel> 
-            <TextBlock Text="Kamień Papier Nożyce" FontSize="30" Margin="20"/>
+            <TextBlock Text="Kamień Papier Nożyce" FontSize="30" Margin="20" 
+                       Style="{ThemeResource TitleTextBlockStyle}"/>
             <StackPanel Orientation="Horizontal" Margin="10">
-                <TextBlock Text="Wynik:  " Style="{ThemeResource BaseTextBlockStyle}"/>
-                <TextBlock Name="wynikNiebieski" Text=""/>
-                <TextBlock Text=":"/>
-                <TextBlock Name="wynikCzerwony" Text=""/>
+                <TextBox Text="Wynik:" BorderThickness="0"/>
+                <TextBox Name="wynikNiebieski" Text="0" BorderThickness="0"/>
+                <TextBox Text=":" Width="1" BorderThickness="0"/>
+                <TextBox Name="wynikCzerwony" Text="0" BorderThickness="0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,10">
+                <TextBox Text="Tura: " BorderThickness="0"/>
+                <TextBox Name="tbTura" Text="0" BorderThickness="0"/>
+                <TextBlock Text="/10"/>
             </StackPanel>
             <!-- pierwszy zestaw - przeciwnik -->
             <StackPanel Name="stackPanelCzerwony" Width="360" Background="PaleVioletRed" Orientation="Horizontal" Margin="0">
                 <RadioButton Name="btKamienCzerwony" Width="100" Height="100"
-                        IsEnabled="False">
+                       >
                     <StackPanel>
                         <Image Source="/Assets/rock.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
@@ -27,7 +33,7 @@
                     </StackPanel>
                 </RadioButton>
                 <RadioButton Name="btPapierCzerwony" Width="100" Height="100"
-                        IsEnabled="False">
+                        >
                     <StackPanel>
                         <Image Source="/Assets/paper-icon.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
@@ -35,7 +41,7 @@
                     </StackPanel>
                 </RadioButton>
                 <RadioButton Name="btNozyceCzerwony" Width="100" Height="100"
-                        IsEnabled="False">
+                        >
                     <StackPanel>
                         <Image Source="/Assets/scissors.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
@@ -44,7 +50,7 @@
                 </RadioButton>
             </StackPanel>
             
-            <StackPanel Margin="130"/>
+            <StackPanel Margin="100"/>
             
             <StackPanel Name="stackPanelNiebieski" Width="360" Background="CornflowerBlue" Orientation="Horizontal" Margin="0">
                 <!-- drugi zestaw - gracz -->

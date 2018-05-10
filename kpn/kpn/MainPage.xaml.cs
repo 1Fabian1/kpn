@@ -27,27 +27,32 @@ namespace kpn
     //    btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
     public sealed partial class MainPage : Page
     {
-        int pktNiebieski;
-        int pktCzerwony;
+        int pktNiebieski = 0;
+        int pktCzerwony = 0;
+        
 
         Gra gra = new Gra();
         public MainPage()
         {
             this.InitializeComponent();
             Debug.WriteLine("Debug działa");
-
         }
+
+        
 
         private void btKamienNiebieski_Checked(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("kilk kamien");
             btPapierNiebieski.IsChecked = false;
             btNozyceNiebieski.IsChecked = false;
-            //przyznajPunkty(btKamienNiebieski, RadioButton rb)
-            pktNiebieski = parsujTextBlock(wynikNiebieski);
-            pktCzerwony = parsujTextBlock(wynikCzerwony);
+            gra.symulujWcisniecie(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony);
+            Debug.WriteLine(btKamienCzerwony.IsChecked);
+            Debug.WriteLine(btNozyceCzerwony.IsChecked);
+            Debug.WriteLine(btNozyceCzerwony.IsChecked);
 
-
+            // to na zakończenie
+            dodajTure(tbTura);
+            //gra.pilnujGry(tbTura,btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
 
         }
 
@@ -56,6 +61,8 @@ namespace kpn
             Debug.WriteLine("kilk papier");
             btKamienNiebieski.IsChecked = false;
             btNozyceNiebieski.IsChecked = false;
+            dodajTure(tbTura);
+            //gra.pilnujGry(tbTura, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
 
         }
 
@@ -64,11 +71,21 @@ namespace kpn
             Debug.WriteLine("kilk nozyce");
             btKamienNiebieski.IsChecked = false;
             btPapierNiebieski.IsChecked = false;
+            dodajTure(tbTura);
+            //gra.pilnujGry(tbTura, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
+
         }
 
-        public int parsujTextBlock(TextBlock textBlock)
+        public int parsujTextBox(TextBox textBlock)
         {
-            return int.Parse(textBlock.ToString());
+            return int.Parse(textBlock.Text);
+        }
+
+        public void dodajTure(TextBox tura)
+        {
+            int turyINT = parsujTextBox(tura);
+            turyINT++;
+            tura.Text = turyINT.ToString();
         }
     }
 }
