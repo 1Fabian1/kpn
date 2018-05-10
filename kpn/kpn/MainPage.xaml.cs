@@ -27,6 +27,8 @@ namespace kpn
     //    btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
     public sealed partial class MainPage : Page
     {
+        int pktNiebieski;
+        int pktCzerwony;
 
         Gra gra = new Gra();
         public MainPage()
@@ -36,29 +38,37 @@ namespace kpn
 
         }
 
-        private void btKamienNiebieski_Click(object sender, RoutedEventArgs e)
+        private void btKamienNiebieski_Checked(object sender, RoutedEventArgs e)
         {
-            gra.symulujWcisniecie(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony);
-            Debug.WriteLine("Kamien papier noyzce");
-            Debug.WriteLine("test");
-            Debug.Write(btKamienCzerwony.IsChecked);
-            Debug.Write(btPapierCzerwony.IsChecked);
-            Debug.Write(btNozyceCzerwony.IsChecked);
+            Debug.WriteLine("kilk kamien");
+            btPapierNiebieski.IsChecked = false;
+            btNozyceNiebieski.IsChecked = false;
+            //przyznajPunkty(btKamienNiebieski, RadioButton rb)
+            pktNiebieski = parsujTextBlock(wynikNiebieski);
+            pktCzerwony = parsujTextBlock(wynikCzerwony);
+
+
 
         }
 
-        private void btPapierNiebieski_Click(object sender, RoutedEventArgs e)
+        private void btPapierNiebieski_Checked(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Papier niebieski");
-            Debug.WriteLine(btPapierNiebieski.IsChecked);
-            Debug.WriteLine(btNozyceNiebieski.IsChecked);
+            Debug.WriteLine("kilk papier");
+            btKamienNiebieski.IsChecked = false;
+            btNozyceNiebieski.IsChecked = false;
 
         }
 
-        private void btNozyceNiebieski_Click(object sender, RoutedEventArgs e)
+        private void btNozyceNiebieski_Checked(object sender, RoutedEventArgs e)
         {
-            
+            Debug.WriteLine("kilk nozyce");
+            btKamienNiebieski.IsChecked = false;
+            btPapierNiebieski.IsChecked = false;
+        }
 
+        public int parsujTextBlock(TextBlock textBlock)
+        {
+            return int.Parse(textBlock.ToString());
         }
     }
 }
