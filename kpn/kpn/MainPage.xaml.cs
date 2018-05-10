@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Diagnostics;
+
 
 //Szablon elementu Pusta strona jest udokumentowany na stronie https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x415
 
@@ -30,26 +32,26 @@ namespace kpn
         public MainPage()
         {
             this.InitializeComponent();
-           
+            Debug.WriteLine("Debug działa");
 
         }
 
         private void btKamienNiebieski_Click(object sender, RoutedEventArgs e)
         {
             gra.symulujWcisniecie(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony);
-            if (gra.zwyciestwoNiebieski(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony,
-                btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski))
-            {
-                wynikNiebieski.Text = "Niebieski WINNER";
-            }
-            else {
-                wynikCzerwony.Text = "Czerwony Winner";
-            }
+            Debug.WriteLine("Kamien papier noyzce");
+            Debug.WriteLine("test");
+            Debug.Write(btKamienCzerwony.IsChecked);
+            Debug.Write(btPapierCzerwony.IsChecked);
+            Debug.Write(btNozyceCzerwony.IsChecked);
+
         }
 
         private void btPapierNiebieski_Click(object sender, RoutedEventArgs e)
         {
-            
+            Debug.WriteLine("Papier niebieski");
+            Debug.WriteLine(btPapierNiebieski.IsChecked);
+            Debug.WriteLine(btNozyceNiebieski.IsChecked);
 
         }
 

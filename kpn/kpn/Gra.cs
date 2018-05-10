@@ -10,7 +10,8 @@ namespace kpn
     class Gra
     {
 
-        public bool zwyciestwoNiebieski(Button kamienCzerw, Button papierCzerw, Button nozyceCzerw, Button kamienNieb, Button papierNieb, Button nozyceNieb)
+        public bool zwyciestwoNiebieski(RadioButton kamienCzerw, RadioButton papierCzerw, RadioButton nozyceCzerw,
+            RadioButton kamienNieb, RadioButton papierNieb, RadioButton nozyceNieb)
         {
             if (kamienCzerw.IsEnabled || kamienNieb.IsEnabled) return false;
             if (kamienCzerw.IsEnabled || papierNieb.IsEnabled) return true;
@@ -24,7 +25,7 @@ namespace kpn
             else return false;
         }
 
-        public Button symulujWcisniecie(Button kamienCzerw, Button papierCzerw, Button nozyceCzerw)
+        public RadioButton symulujWcisniecie(RadioButton kamienCzerw, RadioButton papierCzerw, RadioButton nozyceCzerw)
         {
             int traf;
             Random random = new Random();
@@ -44,7 +45,7 @@ namespace kpn
                 nozyceCzerw.IsEnabled = true;
                 return nozyceCzerw;
             }
-            else return new Button();
+            else return null;
 
 
         }

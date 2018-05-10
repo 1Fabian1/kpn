@@ -17,58 +17,58 @@
                 <TextBlock Name="wynikNiebieski" Text=""/>
             </StackPanel>
             <!-- pierwszy zestaw - przeciwnik -->
-            <StackPanel Name="stackPanelCzerwony" Width="300" Background="PaleVioletRed" Orientation="Horizontal" Margin="0">
-                <Button Name="btKamienCzerwony" Width="100" Height="100"
+            <StackPanel Name="stackPanelCzerwony" Width="360" Background="PaleVioletRed" Orientation="Horizontal" Margin="0">
+                <RadioButton Name="btKamienCzerwony" Width="100" Height="100"
                         IsEnabled="False">
                     <StackPanel>
                         <Image Source="/Assets/rock.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
                         <TextBlock Text="kamień" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
                     </StackPanel>
-                </Button>
-                <Button Name="btPapierCzerwony" Width="100" Height="100"
+                </RadioButton>
+                <RadioButton Name="btPapierCzerwony" Width="100" Height="100"
                         IsEnabled="False">
                     <StackPanel>
                         <Image Source="/Assets/paper-icon.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
                         <TextBlock Text="papier" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
                     </StackPanel>
-                </Button>
-                <Button Name="btNozyceCzerwony" Width="100" Height="100"
+                </RadioButton>
+                <RadioButton Name="btNozyceCzerwony" Width="100" Height="100"
                         IsEnabled="False">
                     <StackPanel>
                         <Image Source="/Assets/scissors.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
                         <TextBlock Text="nożyce" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
                     </StackPanel>
-                </Button>
+                </RadioButton>
             </StackPanel>
             
             <StackPanel Margin="130"/>
             
-            <StackPanel Name="stackPanelNiebieski" Width="300" Background="CornflowerBlue" Orientation="Horizontal" Margin="0">
+            <StackPanel Name="stackPanelNiebieski" Width="360" Background="CornflowerBlue" Orientation="Horizontal" Margin="0">
                 <!-- drugi zestaw - gracz -->
-                <Button Name="btKamienNiebieski" Width="100" Height="100" Click="btKamienNiebieski_Click">
+                <RadioButton Name="btKamienNiebieski" IsChecked="False" Width="100" Height="100" Click="btKamienNiebieski_Click">
                     <StackPanel>
                         <Image Source="/Assets/rock.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
                         <TextBlock Text="kamień" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
                     </StackPanel>
-                </Button>
-                <Button Name="btPapierNiebieski" Width="100" Height="100" Click="btPapierNiebieski_Click">
+                </RadioButton>
+                <RadioButton Name="btPapierNiebieski" IsChecked="False" Width="100" Height="100" Click="btPapierNiebieski_Click">
                     <StackPanel>
                         <Image Source="/Assets/paper-icon.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
                         <TextBlock Text="papier" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
                     </StackPanel>
-                </Button>
-                <Button Name="btNozyceNiebieski" Width="100" Height="100" Click="btNozyceNiebieski_Click">
+                </RadioButton>
+                <RadioButton Name="btNozyceNiebieski" IsChecked="False" Width="100" Height="100" Click="btNozyceNiebieski_Click">
                     <StackPanel>
                         <Image Source="/Assets/scissors.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
                         <TextBlock Text="nożyce" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
                     </StackPanel>
-                </Button>
+                </RadioButton>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <AppBarButton Name="pomoc" Icon="Help"/>
