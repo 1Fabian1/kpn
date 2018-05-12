@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Light">
         <StackPanel> 
             <TextBlock Text="Kamień Papier Nożyce" FontSize="30" Margin="20" 
                        Style="{ThemeResource TitleTextBlockStyle}"/>
@@ -54,7 +54,7 @@
                 </RadioButton>
             </StackPanel>
             
-            <StackPanel Margin="100"/>
+            <StackPanel Margin="90"/>
             
             <StackPanel Name="stackPanelNiebieski" Width="360" Background="CornflowerBlue" Orientation="Horizontal" Margin="0">
                 <!-- drugi zestaw - gracz -->
@@ -81,8 +81,9 @@
                 </RadioButton>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <AppBarButton Name="pomoc" Icon="Help"/>
-                <AppBarButton Name="oProgramie" Icon="Camera"/>
+                <AppBarButton Name="pomoc" Icon="Help" Click="pomoc_Click" Margin="10,0,30,0"/>
+                <AppBarButton Name="restart" Icon="Refresh" Click="restart_Click"/>
+                <AppBarButton Name="doTablicyWynikow" Icon="Forward" Click="doTablicyWynikow_Click" Margin="110,0,0,0"/>
             </StackPanel>
         </StackPanel>
     </Grid>

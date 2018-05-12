@@ -99,5 +99,19 @@ namespace kpn
             gra.pilnujGry(tbTura, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
         }
 
+        private void doTablicyWynikow_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(TablicaWynikow));
+        }
+
+        private void pomoc_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Pomoc));
+        }
+
+        private void restart_Click(object sender, RoutedEventArgs e)
+        {
+            gra.restartuj(tbTura, wynikNiebieski, wynikCzerwony, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
+        }
     }
 }

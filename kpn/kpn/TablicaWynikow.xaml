@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="kpn.TablicaWynikow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:kpn"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <StackPanel>
+                <TextBlock Text="Tablica wyników"/>
+            </StackPanel>
+            <StackPanel Name="trzymaczWynikow">
+                <TextBlock Text="pos 1"/>
+                <TextBlock Text="pos 2"/>
+                <TextBlock Text="pos 3"/>
+                <TextBlock Text="pos 4"/>
+                <TextBlock Text="pos 5"/>
+            </StackPanel>
+            <StackPanel>
+                <AppBarButton Name="doGry" Icon="Back" Click="doGry_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

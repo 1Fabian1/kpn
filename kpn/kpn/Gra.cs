@@ -78,5 +78,21 @@ namespace kpn
             }
 
         }
+
+        public void restartuj(TextBox tbTura, TextBox wynikNiebieski, TextBox wynikCzerwony, RadioButton rb1, RadioButton rb2, RadioButton rb3)
+        {
+            int tbDoZera = int.Parse(tbTura.Text); 
+            tbDoZera = 0;
+            tbTura.Text = tbDoZera.ToString();
+
+            wynikCzerwony.Text = "0";
+            wynikNiebieski.Text = wynikCzerwony.Text;
+
+            rb1.IsEnabled = true;
+            rb2.IsEnabled = true;
+            rb3.IsEnabled = true;
+
+
+        }
     }
 }
