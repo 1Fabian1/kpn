@@ -23,37 +23,22 @@ namespace kpn
     /// Pusta strona, która może być używana samodzielnie lub do której można nawigować wewnątrz ramki.
     /// </summary>
     /// 
-    //zasady.zwyciestwoNiebieski(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony,
-    //    btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
     public sealed partial class MainPage : Page
     {
-        int pktNiebieski = 0;
-        int pktCzerwony = 0;
-        
-
         Gra gra = new Gra();
         public MainPage()
         {
             this.InitializeComponent();
-            Debug.WriteLine("Debug działa");
+            
         }
-
-        
 
         private void btKamienNiebieski_Checked(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("kilk kamien");
             btPapierNiebieski.IsChecked = false;
             btNozyceNiebieski.IsChecked = false;
-            gra.symulujWcisniecie(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony);
-            Debug.WriteLine(btKamienCzerwony.IsChecked);
-            Debug.WriteLine(btNozyceCzerwony.IsChecked);
-            Debug.WriteLine(btNozyceCzerwony.IsChecked);
-
-            // to na zakończenie
-            dodajTure(tbTura);
-            //gra.pilnujGry(tbTura,btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
-
+            akcjaPoWyborze();
+            btKamienNiebieski.IsChecked = false;  //na sam koniec
         }
 
         private void btPapierNiebieski_Checked(object sender, RoutedEventArgs e)
@@ -61,8 +46,8 @@ namespace kpn
             Debug.WriteLine("kilk papier");
             btKamienNiebieski.IsChecked = false;
             btNozyceNiebieski.IsChecked = false;
-            dodajTure(tbTura);
-            //gra.pilnujGry(tbTura, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
+            akcjaPoWyborze();
+            btPapierNiebieski.IsChecked = false;
 
         }
 
@@ -71,8 +56,8 @@ namespace kpn
             Debug.WriteLine("kilk nozyce");
             btKamienNiebieski.IsChecked = false;
             btPapierNiebieski.IsChecked = false;
-            dodajTure(tbTura);
-            //gra.pilnujGry(tbTura, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
+            akcjaPoWyborze();
+            btNozyceNiebieski.IsChecked = false;
 
         }
 
@@ -81,11 +66,38 @@ namespace kpn
             return int.Parse(textBlock.Text);
         }
 
-        public void dodajTure(TextBox tura)
+        public void zwiekszTextBoxO1(TextBox tura)
         {
             int turyINT = parsujTextBox(tura);
             turyINT++;
             tura.Text = turyINT.ToString();
         }
+
+        private void akcjaPoWyborze()
+        {
+            gra.symulujWcisniecie(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony);
+            bool remis = gra.remis(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
+            if (remis == false)
+            {
+                bool wygranaNiebieski = gra.zwyciestwoNiebieski(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
+                if (wygranaNiebieski == true)
+                {
+                    zwiekszTextBoxO1(wynikNiebieski);
+                    zwiekszTextBoxO1(tbTura);
+
+                }
+                if (wygranaNiebieski == false)
+                {
+                    zwiekszTextBoxO1(wynikCzerwony);
+                    zwiekszTextBoxO1(tbTura);
+                }
+            }
+            else
+            {
+                zwiekszTextBoxO1(tbTura);
+            }
+            gra.pilnujGry(tbTura, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
+        }
+
     }
 }

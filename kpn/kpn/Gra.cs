@@ -12,70 +12,46 @@ namespace kpn
     class Gra
     {
         Random random = new Random();
+
+        //działa dobrze
         public bool remis(RadioButton kamienCzerw, RadioButton papierCzerw, RadioButton nozyceCzerw,
             RadioButton kamienNieb, RadioButton papierNieb, RadioButton nozyceNieb)
         {
-            if (kamienCzerw.IsChecked == true || kamienNieb.IsChecked == true) return true;
-            if (papierCzerw.IsChecked == true || papierNieb.IsChecked == true) return true;
-            if (nozyceCzerw.IsChecked == true || nozyceNieb.IsChecked == true) return true;
-            return true;
+            if (kamienCzerw.IsChecked == true && kamienNieb.IsChecked == true) return true;
+            if (papierCzerw.IsChecked == true && papierNieb.IsChecked == true) return true;
+            if (nozyceCzerw.IsChecked == true && nozyceNieb.IsChecked == true) return true;
+
+            return false;
         }
 
+        //działa dobrze
         public bool zwyciestwoNiebieski(RadioButton kamienCzerw, RadioButton papierCzerw, RadioButton nozyceCzerw,
             RadioButton kamienNieb, RadioButton papierNieb, RadioButton nozyceNieb)
         {
-            //if (kamienCzerw.IsEnabled || kamienNieb.IsEnabled) return false;
-            if (kamienCzerw.IsEnabled || papierNieb.IsEnabled) return true;
-            if (kamienCzerw.IsEnabled || nozyceNieb.IsEnabled) return false;
-            if (papierCzerw.IsEnabled || kamienNieb.IsEnabled) return false;
-            //if (papierCzerw.IsEnabled || papierNieb.IsEnabled) return false;
-            if (papierCzerw.IsEnabled || nozyceNieb.IsEnabled) return true;
-            if (nozyceCzerw.IsEnabled || kamienNieb.IsEnabled) return true;
-            if (nozyceCzerw.IsEnabled || papierNieb.IsEnabled) return false;
-            //if (nozyceCzerw.IsEnabled || nozyceNieb.IsEnabled) return false;
-            else return false;
-        }
+            bool kamCzerw = (bool)kamienCzerw.IsChecked;
+            bool papCzerw = (bool)papierCzerw.IsChecked;
+            bool nozCzerw = (bool)nozyceCzerw.IsChecked;
+            bool kamNieb = (bool)kamienNieb.IsChecked;
+            bool papNieb = (bool)papierNieb.IsChecked;
+            bool nozNieb = (bool)nozyceNieb.IsChecked;
 
-        public int przyznajPunktyNiebieski(int wynikNiebieski, int wynikCzerwony, Boolean sprawdzRemis, Boolean czyNiebieskiWygrał)
-        {
-            if (sprawdzRemis == true)
-            {
-                Debug.WriteLine("Sprawdzam remis");
-                return 0;
-            }
-            else
-            {
-                if (czyNiebieskiWygrał == true)
-                {
-                    return wynikNiebieski++;
-                }
-            }
-            return 0;
-            
-        }
+            if (kamCzerw && papNieb) return true;
+            if (kamCzerw && nozNieb) return false;
+            if (papCzerw && kamNieb) return false;
+            if (papCzerw && nozNieb) return true;
+            if (nozCzerw && kamNieb) return true;
+            if (nozCzerw && papNieb) return false;
 
-        public int przyznajPunktyCzerwony(int wynikNiebieski, int wynikCzerwony, Boolean sprawdzRemis, Boolean czyNiebieskiWygrał)
-        {
-            if (sprawdzRemis == true)
-            {
-                Debug.WriteLine("Sprawdzam remis");
-                return 0;
-            }
-            else
-            {
-                if (czyNiebieskiWygrał ==false)
-                {
-                    return wynikCzerwony++;
-                }
-            }
-            return 0;
+            return true;
 
         }
 
+
+        //działa dobrze
         public void symulujWcisniecie(RadioButton kamienCzerw, RadioButton papierCzerw, RadioButton nozyceCzerw)
         {
             int traf;
-            traf = random.Next(0, 2);
+            traf = random.Next(0, 3);
             if (traf == 0) {
                 kamienCzerw.IsChecked = true;
             }
@@ -89,16 +65,18 @@ namespace kpn
             }
         }
 
+        //działa dobrze
         public void pilnujGry(TextBox tbTura, RadioButton rb1, RadioButton rb2, RadioButton rb3)
         {
             int tury = int.Parse(tbTura.Text);
-            if (tury >=10)
+            if (tury >= 10)
             {
                 Debug.WriteLine("Koniec gry");
                 rb1.IsEnabled = false;
                 rb2.IsEnabled = false;
                 rb3.IsEnabled = false;
             }
+
         }
     }
 }

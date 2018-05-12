@@ -11,6 +11,10 @@
         <StackPanel> 
             <TextBlock Text="Kamień Papier Nożyce" FontSize="30" Margin="20" 
                        Style="{ThemeResource TitleTextBlockStyle}"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Niebiescy" Margin="48,0,0,0"/>
+                <TextBlock Text="Czerwoni" Margin="48,0,0,0"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBox Text="Wynik:" BorderThickness="0"/>
                 <TextBox Name="wynikNiebieski" Text="0" BorderThickness="0"/>
