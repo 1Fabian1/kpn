@@ -12,18 +12,18 @@
             <TextBlock Text="Kamień Papier Nożyce" FontSize="30" Margin="20" 
                        Style="{ThemeResource TitleTextBlockStyle}"/>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Niebiescy" Margin="48,0,0,0"/>
+                <TextBlock Text="Niebiescy" Margin="48,0,0,0" />
                 <TextBlock Text="Czerwoni" Margin="48,0,0,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
-                <TextBox Text="Wynik:" BorderThickness="0"/>
-                <TextBox Name="wynikNiebieski" Text="0" BorderThickness="0"/>
-                <TextBox Text=":" Width="1" BorderThickness="0"/>
-                <TextBox Name="wynikCzerwony" Text="0" BorderThickness="0"/>
+                <TextBox Text="Wynik:" BorderThickness="0" IsReadOnly="True"/>
+                <TextBox Name="wynikNiebieski" Text="0" BorderThickness="0" IsReadOnly="True"/>
+                <TextBox Text=":" Width="1" BorderThickness="0" IsReadOnly="True"/>
+                <TextBox Name="wynikCzerwony" Text="0" BorderThickness="0" IsReadOnly="True"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10,0,0,10">
-                <TextBox Text="Tura: " BorderThickness="0"/>
-                <TextBox Name="tbTura" Text="0" BorderThickness="0"/>
+                <TextBox Text="Tura: " BorderThickness="0" IsReadOnly="True"/>
+                <TextBox Name="tbTura" Text="0" BorderThickness="0" IsReadOnly="True"/>
                 <TextBlock Text="/10"/>
             </StackPanel>
             <!-- pierwszy zestaw - przeciwnik -->
