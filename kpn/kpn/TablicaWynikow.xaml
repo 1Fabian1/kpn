@@ -10,14 +10,26 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <StackPanel>
-                <TextBlock Text="Tablica wyników"/>
+                <TextBlock Text="Tablica wyników" FontSize="35" Style="{ThemeResource BaseTextBlockStyle}"/>
+                <TextBlock Text="Imie      Punkty" FontSize="30" />
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
             <StackPanel Name="trzymaczWynikow">
-                <TextBlock Text="pos 1"/>
-                <TextBlock Text="pos 2"/>
-                <TextBlock Text="pos 3"/>
-                <TextBlock Text="pos 4"/>
-                <TextBlock Text="pos 5"/>
+                <TextBlock Name="pos1" Text="pos 1" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
+                <TextBlock Name="pos2" Text="pos 2" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
+                <TextBlock Name="pos3" Text="pos 3" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
+                <TextBlock Name="pos4" Text="pos 4" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
+                <TextBlock Name="pos5" Text="pos 5" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
+            </StackPanel>
+                <StackPanel Margin="30,0,0,0">
+                    <TextBlock Name="pktPos1" Text="10" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock Name="pktPos2" Text="10" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock Name="pktPos3" Text="10" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock Name="pktPos4" Text="10" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock Name="pktPos5" Text="10" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
             </StackPanel>
             <StackPanel>
                 <AppBarButton Name="doGry" Icon="Back" Click="doGry_Click"/>

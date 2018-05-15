@@ -69,7 +69,7 @@ namespace kpn
         public void pilnujGry(TextBox tbTura, RadioButton rb1, RadioButton rb2, RadioButton rb3)
         {
             int tury = int.Parse(tbTura.Text);
-            if (tury >= 10)
+            if (tury >= 15)
             {
                 Debug.WriteLine("Koniec gry");
                 rb1.IsEnabled = false;

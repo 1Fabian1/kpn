@@ -12,8 +12,12 @@
             <TextBlock Text="Kamień Papier Nożyce" FontSize="30" Margin="20" 
                        Style="{ThemeResource TitleTextBlockStyle}"/>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Niebiescy" Margin="48,0,0,0" />
-                <TextBlock Text="Czerwoni" Margin="48,0,0,0"/>
+                <StackPanel Background="CornflowerBlue">
+                    <TextBlock Text="Niebiescy" Margin="48,0,0,0"/>
+                </StackPanel>
+                <StackPanel Background="PaleVioletRed" Margin="50,0,0,0">
+                    <TextBlock Text="Czerwoni" Margin="48,0,0,0"/>
+                </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBox Text="Wynik:" BorderThickness="0" IsReadOnly="True"/>
@@ -24,7 +28,7 @@
             <StackPanel Orientation="Horizontal" Margin="10,0,0,10">
                 <TextBox Text="Tura: " BorderThickness="0" IsReadOnly="True"/>
                 <TextBox Name="tbTura" Text="0" BorderThickness="0" IsReadOnly="True"/>
-                <TextBlock Text="/10"/>
+                <TextBlock Text="/15"/>
             </StackPanel>
             <!-- pierwszy zestaw - przeciwnik -->
             <StackPanel Name="stackPanelCzerwony" Width="360" Background="PaleVioletRed" Orientation="Horizontal" Margin="0">
@@ -36,16 +40,14 @@
                         <TextBlock Text="kamień" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
                     </StackPanel>
                 </RadioButton>
-                <RadioButton Name="btPapierCzerwony" Width="100" Height="100"
-                        >
+                <RadioButton Name="btPapierCzerwony" Width="100" Height="100">
                     <StackPanel>
                         <Image Source="/Assets/paper-icon.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>
                         <TextBlock Text="papier" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}" Foreground="black"/>
                     </StackPanel>
                 </RadioButton>
-                <RadioButton Name="btNozyceCzerwony" Width="100" Height="100"
-                        >
+                <RadioButton Name="btNozyceCzerwony" Width="100" Height="100">
                     <StackPanel>
                         <Image Source="/Assets/scissors.png" Width="60" Height="60"
                                HorizontalAlignment="Center"/>

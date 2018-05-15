@@ -30,6 +30,7 @@ namespace kpn
         {
             this.InitializeComponent();
             
+            
         }
 
         private void btKamienNiebieski_Checked(object sender, RoutedEventArgs e)
