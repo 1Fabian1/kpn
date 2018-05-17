@@ -7,30 +7,29 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <DataTemplate x:Key="pozycjaWyniku">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="imie" Text="{Binding imie}" Margin="0,0,80,0"/>
+                <TextBox Name="wynik" Text="{Binding wynik}" IsReadOnly="True"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <StackPanel>
                 <TextBlock Text="Tablica wyników" FontSize="35" Style="{ThemeResource BaseTextBlockStyle}"/>
-                <TextBlock Text="Imie      Punkty" FontSize="30" />
+                <TextBlock Text="Imie      Punkty" FontSize="30" Margin="20,0,0,0" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-            <StackPanel Name="trzymaczWynikow">
-                <TextBlock Name="pos1" Text="pos 1" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
-                <TextBlock Name="pos2" Text="pos 2" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
-                <TextBlock Name="pos3" Text="pos 3" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
-                <TextBlock Name="pos4" Text="pos 4" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
-                <TextBlock Name="pos5" Text="pos 5" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
-            </StackPanel>
-                <StackPanel Margin="30,0,0,0">
-                    <TextBlock Name="pktPos1" Text="10" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
-                    <TextBlock Name="pktPos2" Text="10" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
-                    <TextBlock Name="pktPos3" Text="10" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
-                    <TextBlock Name="pktPos4" Text="10" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
-                    <TextBlock Name="pktPos5" Text="10" FontSize="30" Style="{StaticResource BaseTextBlockStyle}"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel>
-            </StackPanel>
+
+                <ListBox Name="item1" ItemTemplate="{StaticResource pozycjaWyniku}"/>
+                <ListBox Name="item2" ItemTemplate="{StaticResource pozycjaWyniku}"/>
+                <ListBox Name="item3" ItemTemplate="{StaticResource pozycjaWyniku}"/>
+                <ListBox Name="item4" ItemTemplate="{StaticResource pozycjaWyniku}"/>
+                <ListBox Name="item5" ItemTemplate="{StaticResource pozycjaWyniku}"/>
+
             <StackPanel>
                 <AppBarButton Name="doGry" Icon="Back" Click="doGry_Click"/>
             </StackPanel>

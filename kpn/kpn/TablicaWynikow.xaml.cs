@@ -25,6 +25,15 @@ namespace kpn
         public TablicaWynikow()
         {
             this.InitializeComponent();
+            
+        }
+
+        public void ladujPlansze()
+        {
+            Punkty a = new Punkty("Fabian", "10");
+            
+            
+            
         }
 
         private void doGry_Click(object sender, RoutedEventArgs e)

@@ -106,6 +106,7 @@
     <Compile Include="TablicaWynikow.xaml.cs">
       <DependentUpon>TablicaWynikow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Punkty.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

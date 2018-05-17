@@ -76,9 +76,11 @@ namespace kpn
                 rb2.IsEnabled = false;
                 rb3.IsEnabled = false;
             }
+            // tutaj dać wstawianie wyniku
 
         }
 
+        //działa dobrze
         public void restartuj(TextBox tbTura, TextBox wynikNiebieski, TextBox wynikCzerwony, RadioButton rb1, RadioButton rb2, RadioButton rb3)
         {
             int tbDoZera = int.Parse(tbTura.Text); 
@@ -91,8 +93,6 @@ namespace kpn
             rb1.IsEnabled = true;
             rb2.IsEnabled = true;
             rb3.IsEnabled = true;
-
-
         }
     }
 }
