@@ -10,7 +10,7 @@
     <Page.Resources>
         <DataTemplate x:Key="pozycjaWyniku">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Name="imie" Text="{Binding imie}" Margin="0,0,80,0"/>
+                <TextBlock Name="imie" Text="{Binding imie}"  Margin="0,0,80,0"/>
                 <TextBox Name="wynik" Text="{Binding wynik}" IsReadOnly="True"/>
             </StackPanel>
         </DataTemplate>
@@ -23,12 +23,19 @@
                 <TextBlock Text="Tablica wyników" FontSize="35" Style="{ThemeResource BaseTextBlockStyle}"/>
                 <TextBlock Text="Imie      Punkty" FontSize="30" Margin="20,0,0,0" />
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="imie" Text="{Binding imie}"  Margin="0,0,80,0"/>
+                <TextBox Name="wynik" Text="{Binding wynik}" IsReadOnly="True"/>
+            </StackPanel>
+            
+            <!--
 
-                <ListBox Name="item1" ItemTemplate="{StaticResource pozycjaWyniku}"/>
+            <ListBox Name="item1" ItemTemplate="{StaticResource pozycjaWyniku}"/>
                 <ListBox Name="item2" ItemTemplate="{StaticResource pozycjaWyniku}"/>
                 <ListBox Name="item3" ItemTemplate="{StaticResource pozycjaWyniku}"/>
                 <ListBox Name="item4" ItemTemplate="{StaticResource pozycjaWyniku}"/>
                 <ListBox Name="item5" ItemTemplate="{StaticResource pozycjaWyniku}"/>
+            -->
 
             <StackPanel>
                 <AppBarButton Name="doGry" Icon="Back" Click="doGry_Click"/>

@@ -25,13 +25,16 @@ namespace kpn
         public TablicaWynikow()
         {
             this.InitializeComponent();
+            ladujPlansze();
             
         }
 
         public void ladujPlansze()
         {
             Punkty a = new Punkty("Fabian", "10");
-            
+
+            imie.Text= a.imie.ToString();
+            wynik.Text = a.wynik.ToString();
             
             
         }
