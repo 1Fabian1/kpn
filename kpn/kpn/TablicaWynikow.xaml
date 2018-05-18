@@ -10,7 +10,7 @@
     <Page.Resources>
         <DataTemplate x:Key="pozycjaWyniku">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Name="imie" Text="{Binding imie}"  Margin="0,0,80,0"/>
+                <TextBox Name="imie" Text="{Binding imie}"  Margin="0,0,80,0"/>
                 <TextBox Name="wynik" Text="{Binding wynik}" IsReadOnly="True"/>
             </StackPanel>
         </DataTemplate>
@@ -19,14 +19,25 @@
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
-            <StackPanel>
+            <StackPanel Name="pos1">
                 <TextBlock Text="Tablica wyników" FontSize="35" Style="{ThemeResource BaseTextBlockStyle}"/>
                 <TextBlock Text="Imie      Punkty" FontSize="30" Margin="20,0,0,0" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Name="imie" Text="{Binding imie}"  Margin="0,0,80,0"/>
-                <TextBox Name="wynik" Text="{Binding wynik}" IsReadOnly="True"/>
+
+            <Border>
+                <ListBox Name="lbWyniki" ItemTemplate="{StaticResource pozycjaWyniku}"/>
+            </Border>
+
+            <!--
+            <StackPanel Name="pos2" Orientation="Horizontal">
+                <TextBox Name="imie1" Text="{Binding imie}"  Margin="0,0,80,0"/>
+                <TextBox Name="wynik1" Text="{Binding wynik}" IsReadOnly="True"/>
             </StackPanel>
+            <StackPanel Name="pos3" Orientation="Horizontal">
+                <TextBox Name="imie2" Text="{Binding imie}"  Margin="0,0,80,0"/>
+                <TextBox Name="wynik2" Text="{Binding wynik}" IsReadOnly="True"/>
+            </StackPanel>
+            -->
             
             <!--
 

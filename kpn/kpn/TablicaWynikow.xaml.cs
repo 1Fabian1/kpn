@@ -29,15 +29,32 @@ namespace kpn
             
         }
 
+        List<Punkty> wyniki = new List<Punkty>();
+
         public void ladujPlansze()
         {
-            Punkty a = new Punkty("Fabian", "10");
+            if(wyniki.Count == 0)
+            {
+                wyniki.Insert(0, new Punkty("Gracz","0"));
+                wyniki.Insert(1, new Punkty("Gracz", "0"));
+                wyniki.Insert(2, new Punkty("Gracz", "0"));
+                wyniki.Insert(3, new Punkty("Gracz", "0"));
+                wyniki.Insert(4, new Punkty("Gracz", "0"));
+                lbWyniki.ItemsSource = wyniki;
 
-            imie.Text= a.imie.ToString();
-            wynik.Text = a.wynik.ToString();
-            
+            }
             
         }
+
+        private void ustawWyniki(List<Punkty> listaPunktow)
+        {
+            //dać listę
+            //sprawdzić min element, jeśli mniejszy zamienić
+            //posortować i wyświetlić
+            //dać możliwość zmiany imienia
+
+        }
+       
 
         private void doGry_Click(object sender, RoutedEventArgs e)
         {
