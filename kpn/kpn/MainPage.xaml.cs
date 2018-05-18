@@ -29,10 +29,8 @@ namespace kpn
         public MainPage()
         {
             this.InitializeComponent();
-            
-            
         }
-
+        
         private void btKamienNiebieski_Checked(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("kilk kamien");
@@ -49,7 +47,7 @@ namespace kpn
             btNozyceNiebieski.IsChecked = false;
             akcjaPoWyborze();
             btPapierNiebieski.IsChecked = false;
-
+            
         }
 
         private void btNozyceNiebieski_Checked(object sender, RoutedEventArgs e)
@@ -60,6 +58,13 @@ namespace kpn
             akcjaPoWyborze();
             btNozyceNiebieski.IsChecked = false;
 
+        }
+
+        public int podajWynik()
+        {
+            int a;
+            a = int.Parse(wynikNiebieski.Text);
+            return a;
         }
 
         public int parsujTextBox(TextBox textBlock)

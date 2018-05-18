@@ -24,8 +24,11 @@ namespace kpn
     {
         public TablicaWynikow()
         {
+            MainPage mainPage = new MainPage();
             this.InitializeComponent();
             ladujPlansze();
+            int a = mainPage.podajWynik();
+            ustawWyniki(wyniki, 5, "Fabian");
             
         }
 
@@ -46,11 +49,21 @@ namespace kpn
             
         }
 
-        private void ustawWyniki(List<Punkty> listaPunktow)
+        private void ustawWyniki(List<Punkty> listaPunktow, int wynikRundy, string imie)
         {
+            Punkty pkt = new Punkty();
             //dać listę
+            //listaPunktow.Sort();
+            pkt = listaPunktow.Last<Punkty>();
+            int pktZListy = int.Parse(pkt.wynik.ToString());
             //sprawdzić min element, jeśli mniejszy zamienić
+            if (wynikRundy > pktZListy)
+            {
+                Punkty nowyPkt = new Punkty(imie, wynikRundy.ToString());
+                listaPunktow.Insert(4, nowyPkt);
+            }
             //posortować i wyświetlić
+            //listaPunktow.Sort();
             //dać możliwość zmiany imienia
 
         }

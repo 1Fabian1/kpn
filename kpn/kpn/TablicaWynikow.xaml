@@ -10,7 +10,7 @@
     <Page.Resources>
         <DataTemplate x:Key="pozycjaWyniku">
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="imie" Text="{Binding imie}"  Margin="0,0,80,0"/>
+                <TextBox Name="imie" Text="{Binding imie}" IsReadOnly="True" Margin="0,0,80,0"/>
                 <TextBox Name="wynik" Text="{Binding wynik}" IsReadOnly="True"/>
             </StackPanel>
         </DataTemplate>
@@ -27,26 +27,6 @@
             <Border>
                 <ListBox Name="lbWyniki" ItemTemplate="{StaticResource pozycjaWyniku}"/>
             </Border>
-
-            <!--
-            <StackPanel Name="pos2" Orientation="Horizontal">
-                <TextBox Name="imie1" Text="{Binding imie}"  Margin="0,0,80,0"/>
-                <TextBox Name="wynik1" Text="{Binding wynik}" IsReadOnly="True"/>
-            </StackPanel>
-            <StackPanel Name="pos3" Orientation="Horizontal">
-                <TextBox Name="imie2" Text="{Binding imie}"  Margin="0,0,80,0"/>
-                <TextBox Name="wynik2" Text="{Binding wynik}" IsReadOnly="True"/>
-            </StackPanel>
-            -->
-            
-            <!--
-
-            <ListBox Name="item1" ItemTemplate="{StaticResource pozycjaWyniku}"/>
-                <ListBox Name="item2" ItemTemplate="{StaticResource pozycjaWyniku}"/>
-                <ListBox Name="item3" ItemTemplate="{StaticResource pozycjaWyniku}"/>
-                <ListBox Name="item4" ItemTemplate="{StaticResource pozycjaWyniku}"/>
-                <ListBox Name="item5" ItemTemplate="{StaticResource pozycjaWyniku}"/>
-            -->
 
             <StackPanel>
                 <AppBarButton Name="doGry" Icon="Back" Click="doGry_Click"/>
