@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Diagnostics;
+using Windows.Storage;
 
 
 //Szablon elementu Pusta strona jest udokumentowany na stronie https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x415
@@ -29,6 +30,7 @@ namespace kpn
         public MainPage()
         {
             this.InitializeComponent();
+
         }
         
         private void btKamienNiebieski_Checked(object sender, RoutedEventArgs e)
@@ -103,6 +105,8 @@ namespace kpn
                 zwiekszTextBoxO1(tbTura);
             }
             gra.pilnujGry(tbTura, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
+
+            string zapiszWynik = wynikNiebieski.Text;
         }
 
         private void doTablicyWynikow_Click(object sender, RoutedEventArgs e)
