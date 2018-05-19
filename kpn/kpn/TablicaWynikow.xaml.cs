@@ -28,37 +28,39 @@ namespace kpn
             this.InitializeComponent();
             ladujPlansze();
             int a = mainPage.podajWynik();
-            ustawWyniki(wyniki, 5, "Fabian");
-            ustawWyniki(wyniki, 4, "Michał");
-            ustawWyniki(wyniki, 9, "Adam");
-            ustawWyniki(wyniki, 3, "Tomek");
-            ustawWyniki(wyniki, 4, "Michał1");
-            ustawWyniki(wyniki, 1, "Adam1");
-            ustawWyniki(wyniki, 2, "Tomek1");
-            kontrolujDlugoscListy(wyniki);
+           
+            kontrolujDlugoscListy(listaWyniki);
            
 
         }
 
-        List<Punkty> wyniki = new List<Punkty>(5);
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            String wynik = e.Parameter.ToString();
+            ustawWyniki(listaWyniki, wynik, "Fabianeeee");
+            kontrolujDlugoscListy(listaWyniki);
+        }
+
+        List<Punkty> listaWyniki = new List<Punkty>(5);
         
 
         public void ladujPlansze()
         {
-            if(wyniki.Count == 0)
+            if(listaWyniki.Count == 0)
             {
-                wyniki.Insert(0, new Punkty("Gracz","0"));
-                wyniki.Insert(1, new Punkty("Gracz", "0"));
-                wyniki.Insert(2, new Punkty("Gracz", "0"));
-                wyniki.Insert(3, new Punkty("Gracz", "0"));
-                wyniki.Insert(4, new Punkty("Gracz", "0"));
-                lbWyniki.ItemsSource = wyniki;
+                listaWyniki.Insert(0, new Punkty("Gracz","0"));
+                listaWyniki.Insert(1, new Punkty("Gracz", "0"));
+                listaWyniki.Insert(2, new Punkty("Gracz", "0"));
+                listaWyniki.Insert(3, new Punkty("Gracz", "0"));
+                listaWyniki.Insert(4, new Punkty("Gracz", "0"));
+                lbWyniki.ItemsSource = listaWyniki;
             }
             
         }
 
-        private void ustawWyniki(List<Punkty> listaPunktow, int wynikRundy, string imie)
+        private void ustawWyniki(List<Punkty> listaPunktow, string wynik , string imie)
         {
+            int wynikRundy = int.Parse(wynik);
             Punkty pkt = new Punkty();
             //dać listę
             listaPunktow.Sort();
@@ -84,11 +86,14 @@ namespace kpn
                 listaPunktow.RemoveAt(5);
             }
         }
+
        
 
         private void doGry_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
         }
+        
+
     }
 }

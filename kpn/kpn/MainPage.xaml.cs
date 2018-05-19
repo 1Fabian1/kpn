@@ -107,7 +107,7 @@ namespace kpn
 
         private void doTablicyWynikow_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(TablicaWynikow));
+            this.Frame.Navigate(typeof(TablicaWynikow), wynikNiebieski.Text);
         }
 
         private void pomoc_Click(object sender, RoutedEventArgs e)
