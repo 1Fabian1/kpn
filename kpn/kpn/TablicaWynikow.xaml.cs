@@ -29,10 +29,19 @@ namespace kpn
             ladujPlansze();
             int a = mainPage.podajWynik();
             ustawWyniki(wyniki, 5, "Fabian");
-            
+            ustawWyniki(wyniki, 4, "Michał");
+            ustawWyniki(wyniki, 9, "Adam");
+            ustawWyniki(wyniki, 3, "Tomek");
+            ustawWyniki(wyniki, 4, "Michał1");
+            ustawWyniki(wyniki, 1, "Adam1");
+            ustawWyniki(wyniki, 2, "Tomek1");
+            kontrolujDlugoscListy(wyniki);
+           
+
         }
 
-        List<Punkty> wyniki = new List<Punkty>();
+        List<Punkty> wyniki = new List<Punkty>(5);
+        
 
         public void ladujPlansze()
         {
@@ -44,7 +53,6 @@ namespace kpn
                 wyniki.Insert(3, new Punkty("Gracz", "0"));
                 wyniki.Insert(4, new Punkty("Gracz", "0"));
                 lbWyniki.ItemsSource = wyniki;
-
             }
             
         }
@@ -53,7 +61,7 @@ namespace kpn
         {
             Punkty pkt = new Punkty();
             //dać listę
-            //listaPunktow.Sort();
+            listaPunktow.Sort();
             pkt = listaPunktow.Last<Punkty>();
             int pktZListy = int.Parse(pkt.wynik.ToString());
             //sprawdzić min element, jeśli mniejszy zamienić
@@ -63,9 +71,18 @@ namespace kpn
                 listaPunktow.Insert(4, nowyPkt);
             }
             //posortować i wyświetlić
-            //listaPunktow.Sort();
+            listaPunktow.Sort();
             //dać możliwość zmiany imienia
 
+        }
+
+        private void kontrolujDlugoscListy(List<Punkty> listaPunktow)
+        {
+            listaPunktow.Sort();
+            while (listaPunktow.Count > 5)
+            {
+                listaPunktow.RemoveAt(5);
+            }
         }
        
 

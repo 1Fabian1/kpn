@@ -6,9 +6,21 @@ using System.Threading.Tasks;
 
 namespace kpn
 {
-    class Punkty
+    class Punkty : IComparable
     {
         public Punkty() { }
+
+        public int CompareTo(Object pktDoPorownania0)
+        {
+            Punkty pktDoPorownania = pktDoPorownania0 as Punkty;
+
+            if(pktDoPorownania == null) return 0;
+
+            if (int.Parse(this.wynik) < int.Parse(pktDoPorownania.wynik)) return 1;
+            if (int.Parse(this.wynik) > int.Parse(pktDoPorownania.wynik)) return -1;
+
+            return 0;
+        }
         public Punkty(string imie, string wynik)
         {
             this.imie = imie;
@@ -17,4 +29,7 @@ namespace kpn
         public string imie { get; set; }
         public string wynik { get; set; }
     }
+
+    
+
 }
