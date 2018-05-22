@@ -28,21 +28,17 @@ namespace kpn
             this.InitializeComponent();
             ladujPlansze();
             int a = mainPage.podajWynik();
-           
             kontrolujDlugoscListy(listaWyniki);
-           
 
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            String wynik = e.Parameter.ToString();
-            ustawWyniki(listaWyniki, wynik, "Fabianeeee");
-            kontrolujDlugoscListy(listaWyniki);
+            punkty1 = e.Parameter as Punkty;
         }
 
         List<Punkty> listaWyniki = new List<Punkty>(5);
-        
+        Punkty punkty1 = new Punkty();
 
         public void ladujPlansze()
         {
@@ -77,6 +73,7 @@ namespace kpn
             //dać możliwość zmiany imienia
 
         }
+
 
         private void kontrolujDlugoscListy(List<Punkty> listaPunktow)
         {

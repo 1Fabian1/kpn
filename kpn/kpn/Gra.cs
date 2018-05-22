@@ -77,7 +77,7 @@ namespace kpn
                 rb3.IsEnabled = false;
             }
             // tutaj dać wstawianie wyniku
-
+            
         }
 
         //działa dobrze
@@ -94,5 +94,6 @@ namespace kpn
             rb2.IsEnabled = true;
             rb3.IsEnabled = true;
         }
+
     }
 }
