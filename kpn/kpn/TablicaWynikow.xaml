@@ -21,7 +21,7 @@
         <StackPanel>
             <StackPanel Name="pos1">
                 <TextBlock Text="Tablica wyników" FontSize="35" Style="{ThemeResource BaseTextBlockStyle}"/>
-                <TextBlock Text="Imie      Punkty" FontSize="30" Margin="20,0,0,0" />
+                <TextBlock Text="Imie      Punkty" FontSize="30" Margin="20,0,0,0" />   
             </StackPanel>
 
             <Border>

@@ -31,7 +31,9 @@ namespace kpn
         {
             this.InitializeComponent();
 
+
         }
+
         
         private void btKamienNiebieski_Checked(object sender, RoutedEventArgs e)
         {
@@ -106,9 +108,28 @@ namespace kpn
             }
             gra.pilnujGry(tbTura, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
 
-            string zapiszWynik = wynikNiebieski.Text;
+            
         }
 
+        private async void zapis()
+        {
+            string zapiszWynikNiebieski = wynikNiebieski.Text;
+            string zapiszWynikCzerwony = wynikCzerwony.Text;
+
+        }
+
+        // na próbę bo "localFolder" nie działa
+        /*
+        async void WriteTimestamp()
+        {
+            Windows.Globalization.DateTimeFormatting.DateTimeFormatter formatter =
+                new Windows.Globalization.DateTimeFormatting.DateTimeFormatter("longtime");
+
+            StorageFile sampleFile = await localFolder.CreateFileAsync("dataFile.txt",
+                CreationCollisionOption.ReplaceExisting);
+            await FileIO.WriteTextAsync(sampleFile, formatter.Format(DateTimeOffset.Now));
+        }
+        */
         private void doTablicyWynikow_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(TablicaWynikow), wynikNiebieski.Text);
@@ -122,6 +143,11 @@ namespace kpn
         private void restart_Click(object sender, RoutedEventArgs e)
         {
             gra.restartuj(tbTura, wynikNiebieski, wynikCzerwony, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

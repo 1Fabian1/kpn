@@ -10,7 +10,18 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <StackPanel>
-                <TextBlock Text="POMOC"/>
+                <TextBlock Text="POMOC" FontSize="35" Style="{ThemeResource BaseTextBlockStyle}"/>
+                <TextBlock Text="Zasady gry:" FontSize="20"/>
+                <TextBlock Text="Gra składa się z kolejnych tur, w każdej turze &#x0a;
+gracz wybiera kamień, papier lub nożyce koloru niebieskiego.&#x0a;
+gracz, który wybrał silniejszy symbol&#x0a;
+otrzymuje jeden punkt. W przypadku pokazania&#x0a;
+dwóch takich samych symboli następuje remis,&#x0a;
+żaden z graczy nie otrzymuje punktu.&#x0a;
+- nożyce są slilniejsze od papieru ponieważ go tną&#x0a;
+- kamień jest silnijeszy do nożyc ponieważ je tępi&#x0a;
+- papier jest silniejszy od kamienia ponieważ go owija&#x0a;"
+                          Margin="10" />
             </StackPanel>
             <StackPanel>
                 <AppBarButton Name="doGry" Icon="Back" Click="doGry_Click"/>
