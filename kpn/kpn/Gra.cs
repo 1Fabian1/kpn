@@ -76,7 +76,6 @@ namespace kpn
                 rb2.IsEnabled = false;
                 rb3.IsEnabled = false;
             }
-            // tutaj dać wstawianie wyniku
             
         }
 

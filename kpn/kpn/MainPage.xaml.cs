@@ -30,14 +30,15 @@ namespace kpn
         public MainPage()
         {
             this.InitializeComponent();
-
+            btKamienCzerwony.IsEnabled = false;
+            btPapierCzerwony.IsEnabled = false;
+            btNozyceCzerwony.IsEnabled = false;
 
         }
 
         
         private void btKamienNiebieski_Checked(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("kilk kamien");
             btPapierNiebieski.IsChecked = false;
             btNozyceNiebieski.IsChecked = false;
             akcjaPoWyborze();
@@ -46,7 +47,6 @@ namespace kpn
 
         private void btPapierNiebieski_Checked(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("kilk papier");
             btKamienNiebieski.IsChecked = false;
             btNozyceNiebieski.IsChecked = false;
             akcjaPoWyborze();
@@ -56,7 +56,6 @@ namespace kpn
 
         private void btNozyceNiebieski_Checked(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("kilk nozyce");
             btKamienNiebieski.IsChecked = false;
             btPapierNiebieski.IsChecked = false;
             akcjaPoWyborze();
@@ -110,26 +109,7 @@ namespace kpn
 
             
         }
-
-        private async void zapis()
-        {
-            string zapiszWynikNiebieski = wynikNiebieski.Text;
-            string zapiszWynikCzerwony = wynikCzerwony.Text;
-
-        }
-
-        // na próbę bo "localFolder" nie działa
-        /*
-        async void WriteTimestamp()
-        {
-            Windows.Globalization.DateTimeFormatting.DateTimeFormatter formatter =
-                new Windows.Globalization.DateTimeFormatting.DateTimeFormatter("longtime");
-
-            StorageFile sampleFile = await localFolder.CreateFileAsync("dataFile.txt",
-                CreationCollisionOption.ReplaceExisting);
-            await FileIO.WriteTextAsync(sampleFile, formatter.Format(DateTimeOffset.Now));
-        }
-        */
+        
         private void doTablicyWynikow_Click(object sender, RoutedEventArgs e)
         {
             Punkty pkt = new Punkty(tbImie.Text, wynikNiebieski.Text);
