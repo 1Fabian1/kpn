@@ -29,6 +29,11 @@ namespace kpn
         public string imie { get; set; }
         public string wynik { get; set; }
 
+        public override string ToString()
+        {
+            return imie + " " + wynik;
+        }
+
 
     }
 

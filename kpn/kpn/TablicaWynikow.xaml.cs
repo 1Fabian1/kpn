@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Diagnostics;
 using Windows.Storage;
+using System.Text;
 
 //Szablon elementu Pusta strona jest udokumentowany na stronie https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -49,11 +50,17 @@ namespace kpn
             kontrolujDlugoscListy(listaWyniki);
             //zapiszWartosci(listaWyniki);
             //zapiszStan();
+            zapiszPlansze(listaWyniki);
+            
+            czytajWynikiZPliku();
+
+            Debug.WriteLine("wyswietlanie listy");
+            wyswietlListe(listaWyniki);
             
 
         }
 
-        public async void ladujPlansze()
+        public void ladujPlansze()
         {
             /*
             StorageFile storageFile = null;
@@ -92,6 +99,72 @@ namespace kpn
             }
         }
 
+        //zapis tabeli z wynikami do pliku
+        private async void zapiszPlansze(List<Punkty> lista)
+        {
+            string im, wn, doZapisu = "";
+            StringBuilder builder = new StringBuilder();
+            foreach (Punkty x in lista)
+            {
+
+                x.ToString();
+                im = x.imie;
+                wn = x.wynik;
+                builder.AppendLine(im +","+ wn+".");
+                //Debug.WriteLine(x.imie + " Wynik "+ x.wynik);
+            }
+            doZapisu = builder.ToString();
+            //Debug.Write(doZapisu);
+            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            StorageFile sampleFile = await storageFolder.CreateFileAsync("wyniki.txt", CreationCollisionOption.ReplaceExisting);
+            await FileIO.WriteTextAsync(sampleFile, doZapisu);
+            //string doZapisu = string.Join(",", lista.ToString());
+            //Debug.WriteLine(doZapisu);
+        }
+
+        async void czytajWynikiZPliku()
+        {
+            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            StorageFile file = await storageFolder.GetFileAsync("wyniki.txt");
+            string text = await FileIO.ReadTextAsync(file);
+            //Debug.WriteLine(text);
+            string[] wiersze = text.Split('.');
+            int i = 0;
+            // wali błędy jak szalony
+            try
+            {
+                foreach (Punkty x in listaWyniki)
+                {
+                    string[] punkt = wiersze[i].Split(',');
+                    listaWyniki.Insert(i, new Punkty(punkt[0], punkt[1]));
+                    i++;
+                }
+            }
+            catch (InvalidOperationException e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
+            
+
+        }
+
+        private void wyswietlListe(List<Punkty> lista)
+        {
+            string im, wn, doZapisu = "";
+            StringBuilder builder = new StringBuilder();
+            foreach (Punkty x in lista)
+            {
+
+                x.ToString();
+                im = x.imie;
+                wn = x.wynik;
+                builder.AppendLine(im + "," + wn + ".");
+                Debug.WriteLine(x.imie + " Wynik "+ x.wynik);
+            }
+        }
+
+        
+        
         /*
         private async void zapiszWartosci(List<Punkty> listaPunktow)
         {

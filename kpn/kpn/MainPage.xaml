@@ -57,7 +57,7 @@
             </StackPanel>
             
             <StackPanel Margin="60"/>
-            <TextBox Name="tbImie" Text="Podaj imie" Width="300"/>
+            <TextBox Name="tbImie" PlaceholderText="Podaj imie" Width="300"/>
             <StackPanel Name="stackPanelNiebieski" Width="360" Background="CornflowerBlue" Orientation="Horizontal" Margin="0">
                 <!-- drugi zestaw - gracz -->
                 <RadioButton Name="btKamienNiebieski" IsChecked="False" Width="100" Height="100" Checked="btKamienNiebieski_Checked" >
