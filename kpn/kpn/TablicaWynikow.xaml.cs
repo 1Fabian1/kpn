@@ -50,9 +50,10 @@ namespace kpn
             kontrolujDlugoscListy(listaWyniki);
             //zapiszWartosci(listaWyniki);
             //zapiszStan();
-            zapiszPlansze(listaWyniki);
+            //czytajWynikiZPliku();
+            zapiszPlansze();
             
-            czytajWynikiZPliku();
+            //czytajWynikiZPliku();
 
             Debug.WriteLine("wyswietlanie listy");
             wyswietlListe(listaWyniki);
@@ -100,11 +101,11 @@ namespace kpn
         }
 
         //zapis tabeli z wynikami do pliku
-        private async void zapiszPlansze(List<Punkty> lista)
+        private async void zapiszPlansze()
         {
             string im, wn, doZapisu = "";
             StringBuilder builder = new StringBuilder();
-            foreach (Punkty x in lista)
+            foreach (Punkty x in listaWyniki)
             {
 
                 x.ToString();
@@ -129,6 +130,8 @@ namespace kpn
             string text = await FileIO.ReadTextAsync(file);
             //Debug.WriteLine(text);
             string[] wiersze = text.Split('.');
+            //List<String> wierszeL = text.Split('.').ToList();
+            //Stack<string> wierszeS = new Stack<string>(wierszeL);
             int i = 0;
             // wali błędy jak szalony
             try
@@ -136,8 +139,14 @@ namespace kpn
                 foreach (Punkty x in listaWyniki)
                 {
                     string[] punkt = wiersze[i].Split(',');
-                    listaWyniki.Insert(i, new Punkty(punkt[0], punkt[1]));
+                    //List<String> punktL = wierszeS.First().Split();
+                    //Stack<string> punktS = wierszeS.First().Split();
+
+                    listaWyniki.Insert(4, new Punkty(punkt[0], punkt[1]));
                     i++;
+
+                    listaWyniki.Sort();
+                    kontrolujDlugoscListy(listaWyniki);
                 }
             }
             catch (InvalidOperationException e)

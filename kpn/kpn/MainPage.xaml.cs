@@ -118,7 +118,9 @@ namespace kpn
 
         private void pomoc_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Pomoc));
+            Application.Current.Exit();
+            // tutaj pomoc
+            //this.Frame.Navigate(typeof(Pomoc));
         }
 
         private void restart_Click(object sender, RoutedEventArgs e)
