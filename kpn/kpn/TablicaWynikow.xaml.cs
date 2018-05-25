@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using System.Diagnostics;
 using Windows.Storage;
 using System.Text;
+using System.Threading.Tasks;
 
 //Szablon elementu Pusta strona jest udokumentowany na stronie https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,6 +32,7 @@ namespace kpn
             this.InitializeComponent();
             ladujPlansze();
             kontrolujDlugoscListy(listaWyniki);
+            //zapiszPlansze();
             
 
         }
@@ -40,7 +42,7 @@ namespace kpn
         string jakisWynik;
         Punkty punkty1 = new Punkty("Wooow", "10");
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             punkty1 = e.Parameter as Punkty;
             jakiesImie = punkty1.imie.ToString();
@@ -50,7 +52,9 @@ namespace kpn
             kontrolujDlugoscListy(listaWyniki);
             //zapiszWartosci(listaWyniki);
             //zapiszStan();
-            //czytajWynikiZPliku();
+            listaWyniki = await czytajWynikiZPliku();
+            czytajWynikiZPliku();
+
             zapiszPlansze();
             
             //czytajWynikiZPliku();
@@ -100,11 +104,13 @@ namespace kpn
             }
         }
 
+        
         //zapis tabeli z wynikami do pliku
         private async void zapiszPlansze()
         {
             string im, wn, doZapisu = "";
             StringBuilder builder = new StringBuilder();
+            List<Punkty> lista = new List<Punkty>();
             foreach (Punkty x in listaWyniki)
             {
 
@@ -118,22 +124,27 @@ namespace kpn
             //Debug.Write(doZapisu);
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
             StorageFile sampleFile = await storageFolder.CreateFileAsync("wyniki.txt", CreationCollisionOption.ReplaceExisting);
+            Debug.WriteLine(storageFolder.Path);
             await FileIO.WriteTextAsync(sampleFile, doZapisu);
             //string doZapisu = string.Join(",", lista.ToString());
             //Debug.WriteLine(doZapisu);
         }
 
-        async void czytajWynikiZPliku()
+        private async Task<List<Punkty>> czytajWynikiZPliku()
         {
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
             StorageFile file = await storageFolder.GetFileAsync("wyniki.txt");
             string text = await FileIO.ReadTextAsync(file);
             //Debug.WriteLine(text);
             string[] wiersze = text.Split('.');
+            Debug.WriteLine("Wyświetlanie wczytania");
+            Debug.WriteLine(text);
             //List<String> wierszeL = text.Split('.').ToList();
             //Stack<string> wierszeS = new Stack<string>(wierszeL);
             int i = 0;
+            List<Punkty> listaPkt = new List<Punkty>();
             // wali błędy jak szalony
+            /*
             try
             {
                 foreach (Punkty x in listaWyniki)
@@ -153,6 +164,8 @@ namespace kpn
             {
                 Debug.WriteLine(e.ToString());
             }
+            */
+            return listaPkt;
             
 
         }
