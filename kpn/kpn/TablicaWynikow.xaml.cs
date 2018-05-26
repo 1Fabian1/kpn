@@ -26,14 +26,14 @@ namespace kpn
     /// </summary>
     public sealed partial class TablicaWynikow : Page
     {
-        public TablicaWynikow()
+
+
+        public TablicaWynikow() //ładowane jako pierwsze
         {
             MainPage mainPage = new MainPage();
             this.InitializeComponent();
-            ladujPlansze();
-            kontrolujDlugoscListy(listaWyniki);
-            //zapiszPlansze();
-            
+            //ladujPlansze();
+            //kontrolujDlugoscListy(listaWyniki);
 
         }
 
@@ -42,26 +42,23 @@ namespace kpn
         string jakisWynik;
         Punkty punkty1 = new Punkty("Wooow", "10");
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e) //ładowane po konstruktorze
         {
+            //listaWyniki = await czytajWynikiZPliku();
             punkty1 = e.Parameter as Punkty;
             jakiesImie = punkty1.imie.ToString();
             jakisWynik = punkty1.wynik.ToString();
             //Debug.WriteLine("imie " + jakiesImie);
             zarzadzajWynikami(listaWyniki, punkty1);
             kontrolujDlugoscListy(listaWyniki);
+            zapiszPlansze();
             //zapiszWartosci(listaWyniki);
             //zapiszStan();
-            listaWyniki = await czytajWynikiZPliku();
-            czytajWynikiZPliku();
-
-            zapiszPlansze();
-            
             //czytajWynikiZPliku();
+            //czytajWynikiZPliku();
+            //Debug.WriteLine("wyswietlanie listy");
+            //wyswietlListe(listaWyniki);
 
-            Debug.WriteLine("wyswietlanie listy");
-            wyswietlListe(listaWyniki);
-            
 
         }
 
@@ -74,11 +71,13 @@ namespace kpn
             */
             if(listaWyniki.Count == 0)
             {
+                //listaWyniki = await czytajWynikiZPliku();
+
                 listaWyniki.Insert(0, new Punkty("Gracz1","10"));
                 listaWyniki.Insert(1, new Punkty("Gracz2", "1"));
-                listaWyniki.Insert(2, new Punkty("Gracz3", "11"));
+                listaWyniki.Insert(2, new Punkty("Gracz3", "3"));
                 listaWyniki.Insert(3, new Punkty("Gracz4", "7"));
-                listaWyniki.Insert(4, new Punkty("Gracz5", "2"));
+                listaWyniki.Insert(4, new Punkty("Gracz5", "1"));
                 lbWyniki.ItemsSource = listaWyniki;
             }
             
@@ -87,11 +86,17 @@ namespace kpn
         private void zarzadzajWynikami(List<Punkty> lista, Punkty pkt)
         {
             if (lista == null || pkt.imie == null || pkt.wynik == null) return;
+            string minWynik = lista.Min(x => x.wynik);
+            //if (minWynik == null) return;
+            Debug.WriteLine("minWynik "+minWynik);
+            int minWynikInt = int.Parse(minWynik);
 
-            if (int.Parse(pkt.wynik) > int.Parse(lista[4].wynik))
+
+            if (int.Parse(pkt.wynik) > minWynikInt)
             {
                 lista.Add(new Punkty(pkt.imie, pkt.wynik));
             }
+            else return;
 
         }
 
@@ -117,7 +122,7 @@ namespace kpn
                 x.ToString();
                 im = x.imie;
                 wn = x.wynik;
-                builder.AppendLine(im +","+ wn+".");
+                builder.Append(im +" "+ wn+".");
                 //Debug.WriteLine(x.imie + " Wynik "+ x.wynik);
             }
             doZapisu = builder.ToString();
@@ -132,17 +137,26 @@ namespace kpn
 
         private async Task<List<Punkty>> czytajWynikiZPliku()
         {
+            Debug.WriteLine("próbuje czytać plik");
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
             StorageFile file = await storageFolder.GetFileAsync("wyniki.txt");
             string text = await FileIO.ReadTextAsync(file);
             //Debug.WriteLine(text);
             string[] wiersze = text.Split('.');
-            Debug.WriteLine("Wyświetlanie wczytania");
-            Debug.WriteLine(text);
+            List<string> wierszeL = text.Split('.').ToList();
+            List<Punkty> listaPkt = new List<Punkty>();
+            //Debug.WriteLine("Wyświetlanie wczytania");
+            //Debug.WriteLine(wierszeL.ToString());
             //List<String> wierszeL = text.Split('.').ToList();
             //Stack<string> wierszeS = new Stack<string>(wierszeL);
-            int i = 0;
-            List<Punkty> listaPkt = new List<Punkty>();
+
+            for (int i = 0; i < wiersze.Length / 2; i++)
+            {
+                listaPkt.Insert(i, new Punkty(wiersze[i*2], wiersze[i*2+1]));
+            }
+
+            //Uważaj, USUŃ
+            #region 
             // wali błędy jak szalony
             /*
             try
@@ -165,6 +179,7 @@ namespace kpn
                 Debug.WriteLine(e.ToString());
             }
             */
+            #endregion 
             return listaPkt;
             
 
@@ -172,7 +187,7 @@ namespace kpn
 
         private void wyswietlListe(List<Punkty> lista)
         {
-            string im, wn, doZapisu = "";
+            string im, wn = "";
             StringBuilder builder = new StringBuilder();
             foreach (Punkty x in lista)
             {
@@ -198,6 +213,7 @@ namespace kpn
 
         private void doGry_Click(object sender, RoutedEventArgs e)
         {
+            zapiszPlansze();
             this.Frame.Navigate(typeof(MainPage));
         }
         
