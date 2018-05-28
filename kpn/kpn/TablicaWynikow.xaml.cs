@@ -32,7 +32,7 @@ namespace kpn
         {
             MainPage mainPage = new MainPage();
             this.InitializeComponent();
-            //ladujPlansze();
+            ladujPlansze();
             //kontrolujDlugoscListy(listaWyniki);
 
         }
@@ -44,7 +44,7 @@ namespace kpn
 
         protected async override void OnNavigatedTo(NavigationEventArgs e) //ładowane po konstruktorze
         {
-            //listaWyniki = await czytajWynikiZPliku();
+            listaWyniki = await czytajWynikiZPliku();
             punkty1 = e.Parameter as Punkty;
             jakiesImie = punkty1.imie.ToString();
             jakisWynik = punkty1.wynik.ToString();
@@ -122,7 +122,7 @@ namespace kpn
                 x.ToString();
                 im = x.imie;
                 wn = x.wynik;
-                builder.Append(im +" "+ wn+".");
+                builder.AppendLine(im +','+ wn+'.');
                 //Debug.WriteLine(x.imie + " Wynik "+ x.wynik);
             }
             doZapisu = builder.ToString();
@@ -143,16 +143,20 @@ namespace kpn
             string text = await FileIO.ReadTextAsync(file);
             //Debug.WriteLine(text);
             string[] wiersze = text.Split('.');
-            List<string> wierszeL = text.Split('.').ToList();
+           // List<string> wierszeL = text.Split('.').ToList();
             List<Punkty> listaPkt = new List<Punkty>();
             //Debug.WriteLine("Wyświetlanie wczytania");
             //Debug.WriteLine(wierszeL.ToString());
             //List<String> wierszeL = text.Split('.').ToList();
             //Stack<string> wierszeS = new Stack<string>(wierszeL);
-
-            for (int i = 0; i < wiersze.Length / 2; i++)
+            Debug.WriteLine("Czytanie wierszami");
+            
+            foreach (string s in wiersze)
             {
-                listaPkt.Insert(i, new Punkty(wiersze[i*2], wiersze[i*2+1]));
+                if (s == null || s== "") return null;
+                int i = 0;
+                string[] poz = s.Split(',');
+                Debug.Write(poz[i] + " " +poz[++i]);
             }
 
             //Uważaj, USUŃ
