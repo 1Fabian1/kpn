@@ -20,11 +20,16 @@ dwóch takich samych symboli następuje remis,&#x0a;
 żaden z graczy nie otrzymuje punktu.&#x0a;
 - nożyce są slilniejsze od papieru ponieważ go tną&#x0a;
 - kamień jest silnijeszy do nożyc ponieważ je tępi&#x0a;
-- papier jest silniejszy od kamienia ponieważ go owija&#x0a;"
+- papier jest silniejszy od kamienia ponieważ go owija&#x0a;
+&#x0a;
+Podaj Imię i graj! po każdej grze idź&#x0a;
+do tablicy wyników sprawdzić jak Ci poszło ;)"
+
+                           
                           Margin="10" />
             </StackPanel>
             <StackPanel>
-                <AppBarButton Name="doGry" Icon="Back" Click="doGry_Click"/>
+                <AppBarButton Name="doGry" Icon="Forward" Click="doGry_Click"/>
             </StackPanel>
         </StackPanel>
 

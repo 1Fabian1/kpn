@@ -118,8 +118,6 @@ namespace kpn
 
         private void pomoc_Click(object sender, RoutedEventArgs e)
         {
-            //Application.Current.Exit();
-            // tutaj pomoc
             this.Frame.Navigate(typeof(Pomoc));
         }
 

@@ -27,20 +27,18 @@ namespace kpn
     public sealed partial class TablicaWynikow : Page
     {
 
-
         public TablicaWynikow() //ładowane jako pierwsze
         {
             MainPage mainPage = new MainPage();
             this.InitializeComponent();
             ladujPlansze();
-            //kontrolujDlugoscListy(listaWyniki);
-
+            //kontrolujDlugoscListy(listaWyniki);   
         }
 
         List<Punkty> listaWyniki = new List<Punkty>(5);
         string jakiesImie;
         string jakisWynik;
-        Punkty punkty1 = new Punkty("Wooow", "10");
+        Punkty punkty1 = new Punkty();
 
         protected async override void OnNavigatedTo(NavigationEventArgs e) //ładowane po konstruktorze
         {
@@ -54,41 +52,26 @@ namespace kpn
             zapiszPlansze();
             //zapiszWartosci(listaWyniki);
             //zapiszStan();
-            //czytajWynikiZPliku();
-            //czytajWynikiZPliku();
-            //Debug.WriteLine("wyswietlanie listy");
-            //wyswietlListe(listaWyniki);
-
 
         }
 
         public void ladujPlansze()
         {
-            /*
-            StorageFile storageFile = null;
-            storageFile = await ApplicationData.Current.LocalFolder.GetFileAsync("lista");
-            listaWyniki = List<Punkty> as storageFile;
-            */
-            if(listaWyniki.Count == 0)
-            {
-                //listaWyniki = await czytajWynikiZPliku();
-
-                listaWyniki.Insert(0, new Punkty("Gracz1","10"));
-                listaWyniki.Insert(1, new Punkty("Gracz2", "1"));
-                listaWyniki.Insert(2, new Punkty("Gracz3", "3"));
-                listaWyniki.Insert(3, new Punkty("Gracz4", "7"));
-                listaWyniki.Insert(4, new Punkty("Gracz5", "1"));
-                lbWyniki.ItemsSource = listaWyniki;
-            }
-            
+            listaWyniki.Insert(0, new Punkty("Gracz1", "10"));
+            listaWyniki.Insert(1, new Punkty("Gracz2", "1"));
+            listaWyniki.Insert(2, new Punkty("Gracz3", "3"));
+            listaWyniki.Insert(3, new Punkty("Gracz4", "7"));
+            listaWyniki.Insert(4, new Punkty("Gracz5", "1"));
+            lbWyniki.ItemsSource = listaWyniki;
         }
 
         private void zarzadzajWynikami(List<Punkty> lista, Punkty pkt)
         {
-            if (lista == null || pkt.imie == null || pkt.wynik == null) return;
+            
             string minWynik = lista.Min(x => x.wynik);
             //if (minWynik == null) return;
             Debug.WriteLine("minWynik "+minWynik);
+            if (minWynik == null) return;
             int minWynikInt = int.Parse(minWynik);
 
 
@@ -118,21 +101,16 @@ namespace kpn
             List<Punkty> lista = new List<Punkty>();
             foreach (Punkty x in listaWyniki)
             {
-
                 x.ToString();
                 im = x.imie;
                 wn = x.wynik;
                 builder.AppendLine(im +','+ wn+'.');
-                //Debug.WriteLine(x.imie + " Wynik "+ x.wynik);
             }
             doZapisu = builder.ToString();
-            //Debug.Write(doZapisu);
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
             StorageFile sampleFile = await storageFolder.CreateFileAsync("wyniki.txt", CreationCollisionOption.ReplaceExisting);
             Debug.WriteLine(storageFolder.Path);
             await FileIO.WriteTextAsync(sampleFile, doZapisu);
-            //string doZapisu = string.Join(",", lista.ToString());
-            //Debug.WriteLine(doZapisu);
         }
 
         private async Task<List<Punkty>> czytajWynikiZPliku()
@@ -141,8 +119,10 @@ namespace kpn
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
             StorageFile file = await storageFolder.GetFileAsync("wyniki.txt");
             string text = await FileIO.ReadTextAsync(file);
-            //Debug.WriteLine(text);
+            Debug.WriteLine("odczytany text: "+text);
             string[] wiersze = text.Split('.');
+            wiersze[5] = wiersze[4];
+            //wiersze[4].TrimEnd('.');
            // List<string> wierszeL = text.Split('.').ToList();
             List<Punkty> listaPkt = new List<Punkty>();
             //Debug.WriteLine("Wyświetlanie wczytania");
@@ -150,13 +130,12 @@ namespace kpn
             //List<String> wierszeL = text.Split('.').ToList();
             //Stack<string> wierszeS = new Stack<string>(wierszeL);
             Debug.WriteLine("Czytanie wierszami");
-            
             foreach (string s in wiersze)
             {
-                if (s == null || s== "") return null;
-                int i = 0;
-                string[] poz = s.Split(',');
-                Debug.Write(poz[i] + " " +poz[++i]);
+                    if (s == null || s == "") return null;
+                    int i = 0;
+                    string[] poz = s.Split(',');
+                    Debug.Write(poz[i] + " " + poz[++i]);
             }
 
             //Uważaj, USUŃ
@@ -185,8 +164,6 @@ namespace kpn
             */
             #endregion 
             return listaPkt;
-            
-
         }
 
         private void wyswietlListe(List<Punkty> lista)
@@ -203,24 +180,11 @@ namespace kpn
                 Debug.WriteLine(x.imie + " Wynik "+ x.wynik);
             }
         }
-
-        
-        
-        /*
-        private async void zapiszWartosci(List<Punkty> listaPunktow)
-        {
-            StorageFile storageFile1 = listaPunktow;
-            storageFile1 = await ApplicationData.Current.LocalFolder.CreateFileAsync("lista");
-        }
-        */
-       
-
+      
         private void doGry_Click(object sender, RoutedEventArgs e)
         {
             zapiszPlansze();
             this.Frame.Navigate(typeof(MainPage));
         }
-        
-
     }
 }
