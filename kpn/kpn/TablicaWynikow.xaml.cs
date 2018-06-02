@@ -31,7 +31,7 @@ namespace kpn
         {
             MainPage mainPage = new MainPage();
             this.InitializeComponent();
-            ladujPlansze();
+            //listaWyniki = ladujPlansze();
             //kontrolujDlugoscListy(listaWyniki);   
         }
 
@@ -42,27 +42,35 @@ namespace kpn
 
         protected async override void OnNavigatedTo(NavigationEventArgs e) //ładowane po konstruktorze
         {
-            listaWyniki = await czytajWynikiZPliku();
+            List<Punkty> Lpkt = new List<Punkty>();
+            Lpkt = await czytajWynikiZPliku();
+            listaWyniki = Lpkt;
+            //listaWyniki = await czytajWynikiZPliku();
+            Debug.WriteLine("On navigated to jak wygląda lista po wczytaniu: ");
+            //wyswietlListe(listaWyniki);
             punkty1 = e.Parameter as Punkty;
             jakiesImie = punkty1.imie.ToString();
             jakisWynik = punkty1.wynik.ToString();
-            //Debug.WriteLine("imie " + jakiesImie);
             zarzadzajWynikami(listaWyniki, punkty1);
+            listaWyniki.Sort();
             kontrolujDlugoscListy(listaWyniki);
+            lbWyniki.ItemsSource = listaWyniki;
             zapiszPlansze();
-            //zapiszWartosci(listaWyniki);
-            //zapiszStan();
-
+            
+             
         }
 
-        public void ladujPlansze()
+        private List<Punkty> ladujPlansze()
         {
-            listaWyniki.Insert(0, new Punkty("Gracz1", "10"));
-            listaWyniki.Insert(1, new Punkty("Gracz2", "1"));
-            listaWyniki.Insert(2, new Punkty("Gracz3", "3"));
-            listaWyniki.Insert(3, new Punkty("Gracz4", "7"));
-            listaWyniki.Insert(4, new Punkty("Gracz5", "1"));
-            lbWyniki.ItemsSource = listaWyniki;
+
+            List<Punkty> listaWynikiB = new List<Punkty>(5);
+            listaWynikiB.Insert(0, new Punkty("Gracz1", "10"));
+            listaWynikiB.Insert(1, new Punkty("Gracz2", "1"));
+            listaWynikiB.Insert(2, new Punkty("Gracz3", "3"));
+            listaWynikiB.Insert(3, new Punkty("Gracz4", "7"));
+            listaWynikiB.Insert(4, new Punkty("Gracz5", "1"));
+            lbWyniki.ItemsSource = listaWynikiB;
+            return listaWynikiB;
         }
 
         private void zarzadzajWynikami(List<Punkty> lista, Punkty pkt)
@@ -70,8 +78,8 @@ namespace kpn
             
             string minWynik = lista.Min(x => x.wynik);
             //if (minWynik == null) return;
-            Debug.WriteLine("minWynik "+minWynik);
-            if (minWynik == null) return;
+            Debug.WriteLine("minWynik "+ minWynik);
+            //if (minWynik == null) return;
             int minWynikInt = int.Parse(minWynik);
 
 
@@ -119,50 +127,23 @@ namespace kpn
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
             StorageFile file = await storageFolder.GetFileAsync("wyniki.txt");
             string text = await FileIO.ReadTextAsync(file);
-            Debug.WriteLine("odczytany text: "+text);
+            Debug.WriteLine("odczytany text: \n"+text);
             string[] wiersze = text.Split('.');
-            wiersze[5] = wiersze[4];
-            //wiersze[4].TrimEnd('.');
-           // List<string> wierszeL = text.Split('.').ToList();
+            Array.Resize(ref wiersze, wiersze.Length - 1);
             List<Punkty> listaPkt = new List<Punkty>();
-            //Debug.WriteLine("Wyświetlanie wczytania");
-            //Debug.WriteLine(wierszeL.ToString());
-            //List<String> wierszeL = text.Split('.').ToList();
-            //Stack<string> wierszeS = new Stack<string>(wierszeL);
             Debug.WriteLine("Czytanie wierszami");
+            int i = 0;
             foreach (string s in wiersze)
             {
-                    if (s == null || s == "") return null;
-                    int i = 0;
-                    string[] poz = s.Split(',');
-                    Debug.Write(poz[i] + " " + poz[++i]);
+                if (s == null || s == "") break;
+                
+                string[] poz = new string[2];
+                poz = s.Split(',');
+                Debug.Write(poz[0] + " " + poz[1]);
+                listaPkt.Insert(i, new Punkty(poz[0], poz[1]));
+                i++;
             }
 
-            //Uważaj, USUŃ
-            #region 
-            // wali błędy jak szalony
-            /*
-            try
-            {
-                foreach (Punkty x in listaWyniki)
-                {
-                    string[] punkt = wiersze[i].Split(',');
-                    //List<String> punktL = wierszeS.First().Split();
-                    //Stack<string> punktS = wierszeS.First().Split();
-
-                    listaWyniki.Insert(4, new Punkty(punkt[0], punkt[1]));
-                    i++;
-
-                    listaWyniki.Sort();
-                    kontrolujDlugoscListy(listaWyniki);
-                }
-            }
-            catch (InvalidOperationException e)
-            {
-                Debug.WriteLine(e.ToString());
-            }
-            */
-            #endregion 
             return listaPkt;
         }
 
