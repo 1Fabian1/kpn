@@ -63,13 +63,15 @@ namespace kpn
 
         }
 
+        //może nie potrzebne
+        /*
         public int podajWynik()
         {
             int a;
             a = int.Parse(wynikNiebieski.Text);
             return a;
         }
-
+        */
         public int parsujTextBox(TextBox textBlock)
         {
             return int.Parse(textBlock.Text);

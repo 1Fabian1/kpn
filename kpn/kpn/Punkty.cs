@@ -14,7 +14,7 @@ namespace kpn
         {
             Punkty pktDoPorownania = pktDoPorownania0 as Punkty;
 
-            if(pktDoPorownania == null) return 0;
+            if (pktDoPorownania == null) return 0;
 
             if (int.Parse(this.wynik) < int.Parse(pktDoPorownania.wynik)) return 1;
             if (int.Parse(this.wynik) > int.Parse(pktDoPorownania.wynik)) return -1;

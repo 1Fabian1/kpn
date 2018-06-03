@@ -31,8 +31,6 @@ namespace kpn
         {
             MainPage mainPage = new MainPage();
             this.InitializeComponent();
-            //listaWyniki = ladujPlansze();
-            //kontrolujDlugoscListy(listaWyniki);   
         }
 
         List<Punkty> listaWyniki = new List<Punkty>(5);
@@ -45,43 +43,49 @@ namespace kpn
             List<Punkty> Lpkt = new List<Punkty>();
             Lpkt = await czytajWynikiZPliku();
             listaWyniki = Lpkt;
-            //listaWyniki = await czytajWynikiZPliku();
             Debug.WriteLine("On navigated to jak wygląda lista po wczytaniu: ");
-            //wyswietlListe(listaWyniki);
             punkty1 = e.Parameter as Punkty;
             jakiesImie = punkty1.imie.ToString();
             jakisWynik = punkty1.wynik.ToString();
-            zarzadzajWynikami(listaWyniki, punkty1);
+            if (listaWyniki.Count == 0)
+            {
+                listaWyniki.Insert(0, new Punkty(jakiesImie, jakisWynik));
+            }
+            else
+            {
+                zarzadzajWynikami(listaWyniki, punkty1);
+            }
             listaWyniki.Sort();
             kontrolujDlugoscListy(listaWyniki);
-            lbWyniki.ItemsSource = listaWyniki;
+            //lbWyniki.ItemsSource = listaWyniki;
+            wydajDoPlanszy(listaWyniki);
             zapiszPlansze();
             
              
         }
 
-        private List<Punkty> ladujPlansze()
+        private void wydajDoPlanszy(List<Punkty> pkt)
         {
-
-            List<Punkty> listaWynikiB = new List<Punkty>(5);
-            listaWynikiB.Insert(0, new Punkty("Gracz1", "10"));
-            listaWynikiB.Insert(1, new Punkty("Gracz2", "1"));
-            listaWynikiB.Insert(2, new Punkty("Gracz3", "3"));
-            listaWynikiB.Insert(3, new Punkty("Gracz4", "7"));
-            listaWynikiB.Insert(4, new Punkty("Gracz5", "1"));
-            lbWyniki.ItemsSource = listaWynikiB;
-            return listaWynikiB;
+            lbWyniki.ItemsSource = pkt;
         }
+
+        //private List<Punkty> ladujPlansze()
+        //{
+        //    List<Punkty> listaWynikiB = new List<Punkty>(5);
+        //    listaWynikiB.Insert(0, new Punkty("Gracz", "0"));
+        //    listaWynikiB.Insert(1, new Punkty("Gracz", "0"));
+        //    listaWynikiB.Insert(2, new Punkty("Gracz", "0"));
+        //    listaWynikiB.Insert(3, new Punkty("Gracz", "0"));
+        //    listaWynikiB.Insert(4, new Punkty("Gracz", "0"));
+        //    //lbWyniki.ItemsSource = listaWynikiB;
+        //    return listaWynikiB;
+        //}
 
         private void zarzadzajWynikami(List<Punkty> lista, Punkty pkt)
         {
-            
             string minWynik = lista.Min(x => x.wynik);
-            //if (minWynik == null) return;
             Debug.WriteLine("minWynik "+ minWynik);
-            //if (minWynik == null) return;
             int minWynikInt = int.Parse(minWynik);
-
 
             if (int.Parse(pkt.wynik) > minWynikInt)
             {
@@ -101,7 +105,6 @@ namespace kpn
         }
 
         
-        //zapis tabeli z wynikami do pliku
         private async void zapiszPlansze()
         {
             string im, wn, doZapisu = "";
