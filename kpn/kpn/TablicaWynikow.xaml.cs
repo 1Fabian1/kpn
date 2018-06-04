@@ -41,7 +41,14 @@ namespace kpn
         protected async override void OnNavigatedTo(NavigationEventArgs e) //ładowane po konstruktorze
         {
             List<Punkty> Lpkt = new List<Punkty>();
-            Lpkt = await czytajWynikiZPliku();
+            try
+            {
+                Lpkt = await czytajWynikiZPliku();
+            } catch (Exception ex)
+            {
+                Lpkt = ladujPlansze();
+            }
+            
             listaWyniki = Lpkt;
             Debug.WriteLine("On navigated to jak wygląda lista po wczytaniu: ");
             punkty1 = e.Parameter as Punkty;
@@ -57,7 +64,6 @@ namespace kpn
             }
             listaWyniki.Sort();
             kontrolujDlugoscListy(listaWyniki);
-            //lbWyniki.ItemsSource = listaWyniki;
             wydajDoPlanszy(listaWyniki);
             zapiszPlansze();
             
@@ -69,17 +75,17 @@ namespace kpn
             lbWyniki.ItemsSource = pkt;
         }
 
-        //private List<Punkty> ladujPlansze()
-        //{
-        //    List<Punkty> listaWynikiB = new List<Punkty>(5);
-        //    listaWynikiB.Insert(0, new Punkty("Gracz", "0"));
-        //    listaWynikiB.Insert(1, new Punkty("Gracz", "0"));
-        //    listaWynikiB.Insert(2, new Punkty("Gracz", "0"));
-        //    listaWynikiB.Insert(3, new Punkty("Gracz", "0"));
-        //    listaWynikiB.Insert(4, new Punkty("Gracz", "0"));
-        //    //lbWyniki.ItemsSource = listaWynikiB;
-        //    return listaWynikiB;
-        //}
+        private List<Punkty> ladujPlansze()
+        {
+            List<Punkty> listaWynikiB = new List<Punkty>(5);
+            listaWynikiB.Insert(0, new Punkty("Gracz", "0"));
+            listaWynikiB.Insert(1, new Punkty("Gracz", "0"));
+            listaWynikiB.Insert(2, new Punkty("Gracz", "0"));
+            listaWynikiB.Insert(3, new Punkty("Gracz", "0"));
+            listaWynikiB.Insert(4, new Punkty("Gracz", "0"));
+            //lbWyniki.ItemsSource = listaWynikiB;
+            return listaWynikiB;
+        }
 
         private void zarzadzajWynikami(List<Punkty> lista, Punkty pkt)
         {
