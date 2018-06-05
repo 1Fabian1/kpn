@@ -121,7 +121,7 @@ namespace kpn
                 x.ToString();
                 im = x.imie;
                 wn = x.wynik;
-                builder.AppendLine(im +','+ wn+'.');
+                builder.Append(im +','+ wn+'.');
             }
             doZapisu = builder.ToString();
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
