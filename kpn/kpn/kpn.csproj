@@ -115,9 +115,12 @@
     <None Include="kpn_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\draw.mp3" />
     <Content Include="Assets\Paper-icon.png" />
     <Content Include="Assets\rock.png" />
     <Content Include="Assets\scissors.png" />
+    <Content Include="Assets\fail.mp3" />
+    <Content Include="Assets\win.mp3" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

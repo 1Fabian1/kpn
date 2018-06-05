@@ -24,8 +24,12 @@ namespace kpn
     /// Pusta strona, która może być używana samodzielnie lub do której można nawigować wewnątrz ramki.
     /// </summary>
     /// 
+    
     public sealed partial class MainPage : Page
     {
+        private readonly string win = "win.mp3";
+        private readonly string fail = "fail.mp3";
+        private readonly string draw = "draw.mp3";
         Gra gra = new Gra();
         public MainPage()
         {
@@ -35,7 +39,7 @@ namespace kpn
             btNozyceCzerwony.IsEnabled = false;
 
         }
-
+        
         
         private void btKamienNiebieski_Checked(object sender, RoutedEventArgs e)
         {
@@ -63,15 +67,7 @@ namespace kpn
 
         }
 
-        //może nie potrzebne
-        /*
-        public int podajWynik()
-        {
-            int a;
-            a = int.Parse(wynikNiebieski.Text);
-            return a;
-        }
-        */
+        
         public int parsujTextBox(TextBox textBlock)
         {
             return int.Parse(textBlock.Text);
@@ -84,6 +80,18 @@ namespace kpn
             tura.Text = turyINT.ToString();
         }
 
+        public async void muzyka(string type)
+        {
+            MediaElement odtwarzacz = new MediaElement();
+            odtwarzacz.AudioCategory = AudioCategory.Media;
+            StorageFolder Folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+            Folder = await Folder.GetFolderAsync(@"Assets");
+            StorageFile file = await Folder.GetFileAsync(type);
+            odtwarzacz.SetSource(await file.OpenAsync(FileAccessMode.Read), file.ContentType);
+            odtwarzacz.Volume = 100;
+            odtwarzacz.Play();
+        }
+
         private void akcjaPoWyborze()
         {
             gra.symulujWcisniecie(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony);
@@ -93,18 +101,20 @@ namespace kpn
                 bool wygranaNiebieski = gra.zwyciestwoNiebieski(btKamienCzerwony, btPapierCzerwony, btNozyceCzerwony, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
                 if (wygranaNiebieski == true)
                 {
+                    muzyka(win);
                     zwiekszTextBoxO1(wynikNiebieski);
                     zwiekszTextBoxO1(tbTura);
-
                 }
                 if (wygranaNiebieski == false)
                 {
+                    muzyka(fail);
                     zwiekszTextBoxO1(wynikCzerwony);
                     zwiekszTextBoxO1(tbTura);
                 }
             }
             else
             {
+                muzyka(draw);
                 zwiekszTextBoxO1(tbTura);
             }
             gra.pilnujGry(tbTura, btKamienNiebieski, btPapierNiebieski, btNozyceNiebieski);
