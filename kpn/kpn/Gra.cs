@@ -13,7 +13,6 @@ namespace kpn
     {
         Random random = new Random();
 
-        //działa dobrze
         public bool remis(RadioButton kamienCzerw, RadioButton papierCzerw, RadioButton nozyceCzerw,
             RadioButton kamienNieb, RadioButton papierNieb, RadioButton nozyceNieb)
         {
@@ -24,7 +23,6 @@ namespace kpn
             return false;
         }
 
-        //działa dobrze
         public bool zwyciestwoNiebieski(RadioButton kamienCzerw, RadioButton papierCzerw, RadioButton nozyceCzerw,
             RadioButton kamienNieb, RadioButton papierNieb, RadioButton nozyceNieb)
         {
@@ -47,7 +45,6 @@ namespace kpn
         }
 
 
-        //działa dobrze
         public void symulujWcisniecie(RadioButton kamienCzerw, RadioButton papierCzerw, RadioButton nozyceCzerw)
         {
             int traf;
@@ -65,7 +62,6 @@ namespace kpn
             }
         }
 
-        //działa dobrze
         public void pilnujGry(TextBox tbTura, RadioButton rb1, RadioButton rb2, RadioButton rb3)
         {
             int tury = int.Parse(tbTura.Text);
@@ -79,7 +75,6 @@ namespace kpn
             
         }
 
-        //działa dobrze
         public void restartuj(TextBox tbTura, TextBox wynikNiebieski, TextBox wynikCzerwony, RadioButton rb1, RadioButton rb2, RadioButton rb3)
         {
             int tbDoZera = int.Parse(tbTura.Text); 

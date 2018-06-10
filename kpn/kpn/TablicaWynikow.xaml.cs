@@ -40,16 +40,14 @@ namespace kpn
 
         protected async override void OnNavigatedTo(NavigationEventArgs e) //ładowane po konstruktorze
         {
-            List<Punkty> Lpkt = new List<Punkty>();
             try
             {
-                Lpkt = await czytajWynikiZPliku();
+                listaWyniki = await czytajWynikiZPliku();
             } catch (Exception ex)
             {
-                Lpkt = ladujPlansze();
+                listaWyniki = ladujPlansze();
             }
             
-            listaWyniki = Lpkt;
             Debug.WriteLine("On navigated to jak wygląda lista po wczytaniu: ");
             punkty1 = e.Parameter as Punkty;
             jakiesImie = punkty1.imie.ToString();
@@ -66,7 +64,6 @@ namespace kpn
             kontrolujDlugoscListy(listaWyniki);
             wydajDoPlanszy(listaWyniki);
             zapiszPlansze();
-            
              
         }
 
@@ -83,7 +80,6 @@ namespace kpn
             listaWynikiB.Insert(2, new Punkty("Gracz", "0"));
             listaWynikiB.Insert(3, new Punkty("Gracz", "0"));
             listaWynikiB.Insert(4, new Punkty("Gracz", "0"));
-            //lbWyniki.ItemsSource = listaWynikiB;
             return listaWynikiB;
         }
 
@@ -110,7 +106,6 @@ namespace kpn
             }
         }
 
-        
         private async void zapiszPlansze()
         {
             string im, wn, doZapisu = "";
